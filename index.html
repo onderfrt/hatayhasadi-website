@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hatay Hasadı – Topraktan Gelen Lezzet</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,600,700|Lato:300,400,700&subset=latin,latin-ext&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -24,12 +24,12 @@
   body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); line-height: 1.7; overflow-x: hidden; }
 
   /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem; background: rgba(247,242,232,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(92,122,46,0.15); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 2.5rem; background: rgba(247,242,232,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(92,122,46,0.15); }
   .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
   .nav-logo-badge { width: 42px; height: 42px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
   .nav-brand-text { line-height: 1.1; }
-  .nav-brand-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 16px; color: var(--brown); letter-spacing: 0.5px; }
-  .nav-brand-text span { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--green); font-weight: 700; }
+  .nav-brand-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 28px; color: var(--brown); letter-spacing: 0.5px; }
+  .nav-brand-text span { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--green); font-weight: 700; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-lt); transition: color 0.2s; }
   .nav-links a:hover { color: var(--green); }
@@ -62,7 +62,7 @@
   section { padding: 6rem 2rem; }
   .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--green); margin-bottom: 0.75rem; }
   .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,2.8rem); font-weight: 700; color: var(--brown); line-height: 1.2; margin-bottom: 1rem; }
-  .section-sub { font-size: 1.05rem; color: var(--text-lt); font-weight: 300; max-width: 540px; line-height: 1.8; }
+  .section-sub { font-size: 1.05rem; color: var(--text-lt); font-weight: 300; max-width: 600px; line-height: 1.8; }
   .container { max-width: 1140px; margin: 0 auto; }
 
   /* MARQUEE */
@@ -81,8 +81,8 @@
   .product-icon-wrap { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 64px; background: linear-gradient(145deg, var(--cream-dk), var(--cream)); border-bottom: 1px solid rgba(92,122,46,0.1); }
   .product-body { padding: 1.1rem 1.25rem 1.25rem; }
   .product-badge { display: inline-block; margin-bottom: 0.5rem; background: rgba(92,122,46,0.12); color: var(--green); padding: 2px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-  .product-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--brown); margin-bottom: 0.35rem; line-height: 1.3; }
-  .product-desc { font-size: 12px; color: var(--text-lt); line-height: 1.6; margin-bottom: 0.75rem; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--brown); margin-bottom: 0.35rem; line-height: 1.3; }
+  .product-desc { font-size: 14px; color: var(--text-lt); line-height: 1.6; margin-bottom: 0.75rem; }
   .product-order-btn { background: var(--green); color: #fff; border: none; padding: 0.45rem 1rem; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none; transition: background 0.2s; }
   .product-order-btn:hover { background: var(--green-dk); }
 
@@ -201,7 +201,7 @@
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#anasayfa">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACnCAYAAACrfWHaAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAEAAElEQVR42pT9d7QlSXbeh/4iMo8/1/tbt7ztat/T3dPT4w0GmCExJEAQIEWCoAiCAMTHJT0RgABQIkei9MjFJ2qtt+gkgqAVSIIACDccYCzGT/vqru6qLm/vrevt8XkyI97fHyIyM/PkqQGswlm7cs9J89gR8ePHjx8RcXD2ggZCIKXE/p8QAqWUSn8PgEAIgPTvSiNwwHExGq3RWoMI/6y1RuvwN+M/J4QAIID5fwBIia8JIKWUSiEJhEM4kgBCISUk+iZBRPKMkTgp31GY6GskBMLzMbpGwrMBhA9cIr4bYaW+Ju0rHGLiZ0TiEUBgxk8Ia0J2OWoBASjvA7Ei4JFSaFbN4yFkmGOtHWK+TZ0LV5rJhRE4qMQcaGvbqIWLGhNGkIOqOuRVQ" alt="Logo" style="width:44px;height:44px;object-fit:contain;border-radius:50%;">
+   <img src="Hatayhasadi-SeffafLogo.png" style="height:62px; width:auto;">
     <div class="nav-brand-text">
       <strong>Hatay Hasadı</strong>
       <span>Topraktan Gelen Lezzet</span>
@@ -260,7 +260,7 @@
     </div>
     <div class="product-grid">
 
-      <!-- İSOT -->
+       <!-- İSOT -->
       <div class="product-card fade-in">
         <div class="product-icon-wrap">🌶️</div>
         <div class="product-body">
@@ -270,15 +270,15 @@
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
-              <div class="size-prices"><span class="old-price">55 ₺</span><span class="new-price">45 ₺</span><span class="disc-tag">%18</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">95 ₺</span><span class="new-price">80 ₺</span><span class="disc-tag">%16</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">215 ₺</span><span class="new-price">180 ₺</span><span class="disc-tag">%16</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
             </div>
           </div>
           <div class="order-row">
@@ -292,20 +292,20 @@
         <div class="product-icon-wrap">🫙</div>
         <div class="product-body">
           <span class="product-badge">En Çok Satan</span>
-          <div class="product-name">Kırmızı Toz Biber</div>
+          <div class="product-name">Kırmızı Pul Biber</div>
           <div class="product-desc">Acı çeşidi. Güneydoğu'nun bereket yüklü kırmızısı, yoğun renk ve aroma.</div>
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
-              <div class="size-prices"><span class="old-price">50 ₺</span><span class="new-price">40 ₺</span><span class="disc-tag">%20</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%20</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">85 ₺</span><span class="new-price">70 ₺</span><span class="disc-tag">%18</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">190 ₺</span><span class="new-price">160 ₺</span><span class="disc-tag">%16</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
             </div>
           </div>
           <div class="order-row">
@@ -324,15 +324,15 @@
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
-              <div class="size-prices"><span class="old-price">90 ₺</span><span class="new-price">75 ₺</span><span class="disc-tag">%17</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%17</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">160 ₺</span><span class="new-price">135 ₺</span><span class="disc-tag">%16</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">370 ₺</span><span class="new-price">315 ₺</span><span class="disc-tag">%15</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%15</span></div>
             </div>
           </div>
           <div class="order-row">
@@ -351,19 +351,46 @@
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
-              <div class="size-prices"><span class="old-price">50 ₺</span><span class="new-price">40 ₺</span><span class="disc-tag">%20</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%20</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">80 ₺</span><span class="new-price">65 ₺</span><span class="disc-tag">%19</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%19</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">170 ₺</span><span class="new-price">145 ₺</span><span class="disc-tag">%15</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%15</span></div>
             </div>
           </div>
           <div class="order-row">
             <a class="product-order-btn" href="https://wa.me/905441230776?text=Zahter%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- KaraBiber -->
+      <div class="product-card fade-in">
+        <div class="product-icon-wrap">⚫</div>
+        <div class="product-body">
+          <span class="product-badge">Sağlık</span>
+          <div class="product-name">Karabiber(Çekilmiş)</div>
+          <div class="product-desc">Mutfağın vazgeçilmezi. Et, tavuk, çorba ve sosların derinliğini artıran güçlü baharat notu.</div>
+          <div class="product-sizes">
+            <div class="size-row">
+              <span class="size-label">50 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">100 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">250 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
+            </div>
+          </div>
+          <div class="order-row">
+            <a class="product-order-btn" href="https://wa.me/905441230776?text=Karabiber%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
           </div>
         </div>
       </div>
@@ -378,15 +405,15 @@
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
-              <div class="size-prices"><span class="old-price">55 ₺</span><span class="new-price">45 ₺</span><span class="disc-tag">%18</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">95 ₺</span><span class="new-price">80 ₺</span><span class="disc-tag">%16</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">215 ₺</span><span class="new-price">180 ₺</span><span class="disc-tag">%16</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
             </div>
           </div>
           <div class="order-row">
@@ -405,15 +432,15 @@
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
-              <div class="size-prices"><span class="old-price">55 ₺</span><span class="new-price">45 ₺</span><span class="disc-tag">%18</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">95 ₺</span><span class="new-price">80 ₺</span><span class="disc-tag">%16</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">215 ₺</span><span class="new-price">180 ₺</span><span class="disc-tag">%16</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%16</span></div>
             </div>
           </div>
           <div class="order-row">
@@ -432,15 +459,149 @@
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
-              <div class="size-prices"><span class="old-price">55 ₺</span><span class="new-price">45 ₺</span><span class="disc-tag">%18</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">90 ₺</span><span class="new-price">75 ₺</span><span class="disc-tag">%17</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%17</span></div>
             </div>
             <div class="size-row">
               <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">200 ₺</span><span class="new-price">170 ₺</span><span class="disc-tag">%15</span></div>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%15</span></div>
+            </div>
+          </div>
+          <div class="order-row">
+            <a class="product-order-btn" href="https://wa.me/905441230776?text=Kuru%20Nane%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
+          </div>
+        </div>
+      </div>
+      <!-- Kişniş -->
+      <div class="product-card fade-in">
+        <div class="product-icon-wrap">💚</div>
+        <div class="product-body">
+          <span class="product-badge">Klasik</span>
+          <div class="product-name">Kişniş</div>
+          <div class="product-desc">Limonumsu ve hafif baharatlı aromasıyla et yemeklerinde, çorbalarda ve turşularda vazgeçilmez.</div>
+          <div class="product-sizes">
+            <div class="size-row">
+              <span class="size-label">50 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">100 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%17</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">250 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%15</span></div>
+            </div>
+          </div>
+          <div class="order-row">
+            <a class="product-order-btn" href="https://wa.me/905441230776?text=Kişniş%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
+          </div>
+        </div>
+      </div>
+
+       <!-- Rezene -->
+      <div class="product-card fade-in">
+        <div class="product-icon-wrap">💚</div>
+        <div class="product-body">
+          <span class="product-badge">Klasik</span>
+          <div class="product-name">Rezene</div>
+          <div class="product-desc">Tatlı anason aromasıyla balık yemeklerinde, bitki çaylarında ve sindirim için geleneksel kullanım.</div>
+          <div class="product-sizes">
+            <div class="size-row">
+              <span class="size-label">50 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">100 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%17</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">250 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%15</span></div>
+            </div>
+          </div>
+          <div class="order-row">
+            <a class="product-order-btn" href="https://wa.me/905441230776?text=Rezene%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
+          </div>
+        </div>
+      </div>
+
+       <!-- Biberiye -->
+      <div class="product-card fade-in">
+        <div class="product-icon-wrap">💚</div>
+        <div class="product-body">
+          <span class="product-badge">Klasik</span>
+          <div class="product-name">Biberiye</div>
+          <div class="product-desc">Güçlü aromatik yapısıyla fırın etlerinde, tavukta, patates ve zeytinyağlı yemeklerde mükemmel.</div>
+          <div class="product-sizes">
+            <div class="size-row">
+              <span class="size-label">50 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">100 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%17</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">250 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%15</span></div>
+            </div>
+          </div>
+          <div class="order-row">
+            <a class="product-order-btn" href="https://wa.me/905441230776?text=Biberiye%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
+          </div>
+        </div>
+      </div>
+
+       <!-- Karanfil -->
+      <div class="product-card fade-in">
+        <div class="product-icon-wrap">💚</div>
+        <div class="product-body">
+          <span class="product-badge">Klasik</span>
+          <div class="product-name">Karanfil</div>
+          <div class="product-desc">Yemekte, çayda, ayranın içinde. Taze renk, güçlü aroma, zarif görüntü.</div>
+          <div class="product-sizes">
+            <div class="size-row">
+              <span class="size-label">50 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">100 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%17</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">250 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%15</span></div>
+            </div>
+          </div>
+          <div class="order-row">
+            <a class="product-order-btn" href="https://wa.me/905441230776?text=Kuru%20Nane%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
+          </div>
+        </div>
+      </div>
+
+       <!-- Sarımsak Tozu -->
+      <div class="product-card fade-in">
+        <div class="product-icon-wrap">💚</div>
+        <div class="product-body">
+          <span class="product-badge">Klasik</span>
+          <div class="product-name">Sarımsak Tozu</div>
+          <div class="product-desc">Yemekte, çayda, ayranın içinde. Taze renk, güçlü aroma, zarif görüntü.</div>
+          <div class="product-sizes">
+            <div class="size-row">
+              <span class="size-label">50 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%18</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">100 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%17</span></div>
+            </div>
+            <div class="size-row">
+              <span class="size-label">250 gr</span>
+              <div class="size-prices"><span class="old-price">0 ₺</span><span class="new-price">0 ₺</span><span class="disc-tag">%15</span></div>
             </div>
           </div>
           <div class="order-row">
@@ -476,7 +637,7 @@
           <div class="about-icon-card"><span class="icon">📦</span><strong>Özenli Paket</strong><span>Kraft doypack ambalaj</span></div>
         </div>
         <div class="about-icon-row">
-          <div class="about-icon-card"><span class="icon">🚚</span><strong>Kapıya Teslimat</strong><span>İstanbul içi kargo</span></div>
+          <div class="about-icon-card"><span class="icon">🚚</span><strong>Kapıya Teslimat</strong><span>Türkiye'nin her noktasına kargo</span></div>
           <div class="about-icon-card"><span class="icon">✅</span><strong>Sürdürülebilir Lezzet</strong><span>Her Pakette Aynı Tazelik</span></div>
         </div>
         <div class="about-quote">"Hatay'dan getirdiğimiz her baharat, o toprağın güneşini ve bereketini taşıyor."</div>
@@ -488,9 +649,9 @@
           Bizim hikayemiz, çocukluğumuzun geçtiği o uçsuz buçaksız Hatay topraklarında, güneşin altında kuruyan biberlerin kokusuyla başladı. Hatay'ın o kendine has bereketini ve annelerimizin mutfağındaki o gerçek rayihayı tüm doğallığıyla, özenle sofralarınıza taşımak istedik.Güvendiğimiz yerel üreticilerle el ele vererek; toprağın doğallığını bozmadan, içine hiçbir yabancı el değdirmeden en saf baharatları seçtik. Hatay Hasadı olarak tek bir gayemiz var: O özlediğiniz gerçek lezzeti, en taze haliyle sofralarınıza konuk etmek.
         </p>
         <div class="about-content">
-          <div class="about-feature"><div class="about-feature-icon">🤝</div><div class="about-feature-text"><strong>Güvenilir Tedarik Zinciri</strong><span>Yıllardır bilinen üreticilerle doğrudan çalışma ilişkisi</span></div></div>
-          <div class="about-feature"><div class="about-feature-icon">📋</div><div class="about-feature-text"><strong>Sürdürülebilir Lezzet</strong><span>Her partide aynı aroma ve kalite — sürpriz olmaz</span></div></div>
-          <div class="about-feature"><div class="about-feature-icon">💬</div><div class="about-feature-text"><strong>Kolay Sipariş & Hızlı Teslimat</strong><span>WhatsApp ile sipariş, 1-2 iş günü İstanbul içi kargo</span></div></div>
+          <div class="about-feature"><div class="about-feature-icon">🤝</div><div class="about-feature-text"><strong>Güvenilir Tedarik Zinciri</strong><span>Nesilden nesile aktarılan tecrübelerle doğrudan çalışma ilişkisi</span></div></div>
+          <div class="about-feature"><div class="about-feature-icon">📋</div><div class="about-feature-text"><strong>Sürdürülebilir Lezzet</strong><span>Her pakette aynı özen ve kalite</span></div></div>
+          <div class="about-feature"><div class="about-feature-icon">💬</div><div class="about-feature-text"><strong>Kolay Sipariş & Hızlı Teslimat</strong><span>WhatsApp ile sipariş, 1-2 iş günü içerisinde kargo</span></div></div>
         </div>
       </div>
     </div>
@@ -502,7 +663,7 @@
   <div class="container">
     <p class="section-label">Nasıl Sipariş Verilir?</p>
     <h2 class="section-title">4 Adımda Kapınızda</h2>
-    <p class="section-sub">Alışveriş hiç bu kadar kolay olmamıştı. Üyelik yok, karmaşıklık yok.</p>
+    <p class="section-sub">Üyeliğe ihtiyaç duymadan WhatsApp üzerinden bizimle iletişime geçebilir, siparişlerinizi kolayca iletebilirsiniz.</p>
     <div class="steps-grid">
       <div class="step-card fade-in"><span class="step-num">01</span><span class="step-icon">📱</span><h3>WhatsApp'ı Açın</h3><p>Sayfadaki butona tıklayın, sohbetimiz hemen başlasın.</p></div>
       <div class="step-card fade-in"><span class="step-num">02</span><span class="step-icon">🛒</span><h3>Ürün Seçin</h3><p>Hangi baharatı, kaç gram istediğinizi bize iletin.</p></div>
@@ -564,11 +725,12 @@
           <td class="pc"><span class="o">170 ₺</span><span class="n">145 ₺</span><span class="d">%15</span></td>
         </tr>
         <tr>
-          <td><span class="prd-name">Kırmızı Toz Biber</span></td>
+          <td><span class="prd-name">Kırmızı Pul Biber</span></td>
           <td class="pc"><span class="o">50 ₺</span><span class="n">40 ₺</span><span class="d">%20</span></td>
           <td class="pc"><span class="o">85 ₺</span><span class="n">70 ₺</span><span class="d">%18</span></td>
           <td class="pc"><span class="o">190 ₺</span><span class="n">160 ₺</span><span class="d">%16</span></td>
         </tr>
+        
         <tr>
           <td><span class="prd-name">Çörek Otu</span></td>
           <td class="pc"><span class="o">55 ₺</span><span class="n">45 ₺</span><span class="d">%18</span></td>
@@ -656,14 +818,14 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><h3>Hatay Hasadı</h3><p>Topraktan gelen lezzeti, Hatay'dan İstanbul'a taşıyoruz. Katkısız, standart kalite, güvenilir tedarik.</p></div>
+    <div class="footer-brand"><h3>Hatay Hasadı</h8><p>Topraktan gelen lezzeti, Hatay'dan sofralarınıza taşıyoruz. Katkısız, standart kalite, güvenilir tedarik.</p></div>
     <div class="footer-col"><h4>Ürünler</h4><a href="#urunler">İsot Biberi</a><a href="#urunler">Sumak</a><a href="#urunler">Zahter</a><a href="#urunler">Tüm Ürünler</a></div>
     <div class="footer-col"><h4>Bilgi</h4><a href="#hakkimizda">Hakkımızda</a><a href="#nasil-siparis">Nasıl Sipariş?</a><a href="#toplu-siparis">Toplu Sipariş</a></div>
     <div class="footer-col"><h4>İletişim</h4><a href="https://wa.me/905441230776" target="_blank">WhatsApp</a><a href="https://instagram.com/hatayhasadi" target="_blank">Instagram</a><a href="mailto:info@hatayhasadi.com">E-posta</a></div>
   </div>
   <div class="footer-bottom">
     <span>© 2025 Hatay Hasadı. Tüm hakları saklıdır.</span>
-    <span>İstanbul'dan 🌿 Hatay Sevgisiyle</span>
+    <span>Dürüst,Özenli,Adil anlayış> 🌿 Hatay Sevgisiyle</span>
   </div>
 </footer>
 
