@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hatay Hasadı – Topraktan Gelen Lezzet</title>
+<meta name="description" content="Hatay'ın bereketli topraklarından direkt temin edilen baharatlar. İsot, sumak, zahter ve daha fazlası, özenle paketlenip kapınıza ulaşıyor.">
+<meta name="keywords" content="Hatay baharatları, isot biberi, sumak, zahter, pul biber, doğal baharat, Hatay Hasadı">
+<meta property="og:title" content="Hatay Hasadı – Topraktan Gelen Lezzet">
+<meta property="og:description" content="Hatay'ın bereketli topraklarından direkt temin edilen baharatlar. Özenle paketlenip kapınıza ulaşıyor.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hatayhasadi.com">
+<meta property="og:image" content="https://hatayhasadi.com/Hatayhasadi-SeffafLogo2_1.PNG">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="Hatayhasadi-SeffafLogo2_1.PNG">
+<link rel="apple-touch-icon" href="Hatayhasadi-SeffafLogo2_1.PNG">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -210,7 +220,29 @@
   .footer-bottom { max-width: 1140px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 0.5rem; }
 
   /* RESPONSIVE */
-  @media (max-width: 900px) { nav { padding: 1rem 1.25rem; } .nav-links { display: none; } section { padding: 4rem 1.25rem; } }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 200; }
+  .hamburger span { display: block; width: 24px; height: 2.5px; background: var(--brown); border-radius: 2px; transition: all 0.3s ease; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(45,31,16,0.5); z-index: 90; opacity: 0; transition: opacity 0.3s ease; }
+  .mobile-overlay.active { display: block; opacity: 1; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--cream); flex-direction: column; padding: 5rem 2rem 2rem; gap: 0; z-index: 150; box-shadow: -4px 0 24px rgba(0,0,0,0.15); transition: right 0.35s ease; display: flex; }
+    .nav-links.active { right: 0; }
+    .nav-links li { border-bottom: 1px solid rgba(92,122,46,0.12); }
+    .nav-links a { display: block; padding: 1rem 0; font-size: 15px; letter-spacing: 1px; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .nav-links .mobile-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; padding: 0.75rem 1.5rem; border-radius: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; text-align: center; margin-top: 1rem; justify-content: center; }
+    section { padding: 4rem 1.25rem; }
+  }
+  @media (min-width: 901px) {
+    .mobile-cta { display: none !important; }
+  }
 
   /* ANIMATIONS */
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -239,9 +271,14 @@
     <li><a href="#hakkimizda">Hakkımızda</a></li>
     <li><a href="#fiyatlar">Fiyatlar</a></li>
     <li><a href="#toplu-siparis">Toplu Sipariş</a></li>
+    <li><a class="mobile-cta" href="https://wa.me/905441230776?text=Merhaba%2C%20sipariş%20vermek%20istiyorum." target="_blank">Sipariş Ver →</a></li>
   </ul>
   <a class="nav-cta" href="https://wa.me/905441230776?text=Merhaba%2C%20sipariş%20vermek%20istiyorum." target="_blank">Sipariş Ver →</a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
 
 <!-- HERO -->
 <section class="hero" id="anasayfa">
@@ -589,7 +626,7 @@
         <div class="product-body">
           <span class="product-badge">Klasik</span>
           <div class="product-name">Karanfil</div>
-          <div class="product-desc">Yemekte, çayda, ayranın içinde. Taze renk, güçlü aroma, zarif görüntü.</div>
+          <div class="product-desc">Yoğun ve sıcak aromasıyla et sularında, pilavlarda, tatlılarda ve kış çaylarında derinlik katar.</div>
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
@@ -616,7 +653,7 @@
         <div class="product-body">
           <span class="product-badge">Klasik</span>
           <div class="product-name">Sarımsak Tozu</div>
-          <div class="product-desc">Yemekte, çayda, ayranın içinde. Taze renk, güçlü aroma, zarif görüntü.</div>
+          <div class="product-desc">Pratik kullanımıyla marinelerde, soslarda, köftelerde ve çorbalarda doğal sarımsak lezzeti.</div>
           <div class="product-sizes">
             <div class="size-row">
               <span class="size-label">50 gr</span>
@@ -845,14 +882,14 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand"><h3>Hatay Hasadı</h8><p>Topraktan gelen lezzeti, Hatay'dan sofralarınıza taşıyoruz. Katkısız, standart kalite, güvenilir tedarik.</p></div>
+    <div class="footer-brand"><h3>Hatay Hasadı</h3><p>Topraktan gelen lezzeti, Hatay'dan sofralarınıza taşıyoruz. Katkısız, standart kalite, güvenilir tedarik.</p></div>
     <div class="footer-col"><h4>Ürünler</h4><a href="#urunler">İsot Biberi</a><a href="#urunler">Sumak</a><a href="#urunler">Zahter</a><a href="#urunler">Tüm Ürünler</a></div>
     <div class="footer-col"><h4>Bilgi</h4><a href="#hakkimizda">Hakkımızda</a><a href="#nasil-siparis">Nasıl Sipariş?</a><a href="#toplu-siparis">Toplu Sipariş</a></div>
     <div class="footer-col"><h4>İletişim</h4><a href="https://wa.me/905441230776" target="_blank">WhatsApp</a><a href="https://instagram.com/hatayhasadi" target="_blank">Instagram</a><a href="/cdn-cgi/l/email-protection#fb92959d94bb939a8f9a82939a889a9f92d5989496">E-posta</a></div>
   </div>
   <div class="footer-bottom">
     <span>© 2025 Hatay Hasadı. Tüm hakları saklıdır.</span>
-    <span>Dürüst,Özenli,Adil anlayış> 🌿 Hatay Sevgisiyle</span>
+    <span>Dürüst, Özenli, Adil Anlayış 🌿 Hatay Sevgisiyle</span>
   </div>
 </footer>
 
@@ -871,6 +908,28 @@ window.addEventListener('scroll', () => {
 });
 scrollTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Hamburger menu
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.querySelector('.nav-links');
+const mobileOverlay = document.getElementById('mobileOverlay');
+
+function toggleMenu() {
+  hamburgerBtn.classList.toggle('active');
+  navLinks.classList.toggle('active');
+  mobileOverlay.classList.toggle('active');
+  document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+}
+
+hamburgerBtn.addEventListener('click', toggleMenu);
+mobileOverlay.addEventListener('click', toggleMenu);
+
+// Close menu when a link is clicked
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (navLinks.classList.contains('active')) toggleMenu();
+  });
 });
 
 const observer = new IntersectionObserver((entries) => {
