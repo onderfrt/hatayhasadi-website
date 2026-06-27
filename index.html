@@ -274,6 +274,36 @@
   .scroll-top-btn { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: #fff; border: none; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
   .scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
   .scroll-top-btn:hover { background: var(--green-dk); transform: translateY(-2px); }
+
+  /* ÖNE ÇIKAN ÜRÜN — ZEYTİNYAĞI */
+#one-cikan { background: var(--green-dk); color: var(--cream); padding: 5.5rem 2rem; }
+#one-cikan .oo-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4rem; align-items: center; }
+#one-cikan .oo-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: 440px; }
+#one-cikan .oo-glow { position: absolute; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(232,201,122,0.22), rgba(232,201,122,0) 70%); }
+#one-cikan .oo-front { position: relative; max-height: 460px; width: auto; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.45)); }
+#one-cikan .oo-back-wrap { position: absolute; right: 0; bottom: 1.5rem; width: 130px; text-align: center; }
+#one-cikan .oo-back { width: 130px; border-radius: 10px; border: 3px solid rgba(247,242,232,0.85); filter: drop-shadow(0 10px 22px rgba(0,0,0,0.4)); }
+#one-cikan .oo-back-cap { font-size: 11px; letter-spacing: 1px; color: rgba(247,242,232,0.6); margin-top: 6px; text-transform: uppercase; }
+#one-cikan .oo-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+#one-cikan .oo-eyebrow .lbl { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-lt); }
+#one-cikan .oo-eyebrow .rule { height: 1px; width: 40px; background: rgba(232,201,122,0.5); }
+#one-cikan .oo-eyebrow .loc { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(247,242,232,0.65); }
+#one-cikan h2.oo-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--cream); margin-bottom: 1.1rem; }
+#one-cikan .oo-desc { font-size: 1.02rem; line-height: 1.8; color: rgba(247,242,232,0.82); max-width: 480px; margin-bottom: 1.5rem; }
+#one-cikan .oo-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+#one-cikan .oo-chip { font-size: 12px; font-weight: 700; color: var(--cream-dk); background: rgba(247,242,232,0.08); border: 1px solid rgba(232,201,122,0.32); padding: 6px 14px; border-radius: 22px; }
+#one-cikan .oo-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; border-top: 1px solid rgba(247,242,232,0.15); padding-top: 1.5rem; }
+#one-cikan .oo-price { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold-lt); line-height: 1; }
+#one-cikan .oo-price-sub { font-size: 12.5px; color: rgba(247,242,232,0.6); margin-top: 0.4rem; }
+#one-cikan .oo-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--text); padding: 0.95rem 2rem; border-radius: 30px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: all 0.2s; }
+#one-cikan .oo-cta:hover { background: var(--gold-lt); transform: translateY(-1px); }
+@media (max-width: 860px) {
+  #one-cikan .oo-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  #one-cikan .oo-stage { min-height: 360px; }
+  #one-cikan .oo-front { max-height: 360px; }
+  #one-cikan .oo-back-wrap { width: 100px; }
+  #one-cikan .oo-back { width: 100px; }
+}
 </style>
 </head>
 <body>
@@ -282,7 +312,7 @@
 <nav>
 <a class="nav-brand" href="#anasayfa">
   <div class="nav-logo-wrapper">
-    <img src="images/Hatayhasadi-SeffafLogo2_1.PNG" alt="Hatay Hasadı Logo" class="nav-logo-img">
+    <img src="images/HH_seffaf_logo.webp" alt="Hatay Hasadı Logo" class="nav-logo-img">
   </div>
   <div class="nav-brand-text">
     <strong>Hatay Hasadı</strong>
@@ -569,7 +599,7 @@
       </div>
       <!-- Kişniş -->
       <div class="product-card fade-in">
-<div class="product-icon-wrap"><img src="images/Kişniş.webp" alt="Çekilmiş Kisnis" /></div>
+<div class="product-icon-wrap"><img src="images/Kisnis.webp" alt="Çekilmiş Kisnis" /></div>
         <div class="product-body">
           <span class="product-badge">Klasik</span>
           <div class="product-name">Kişniş</div>
@@ -684,7 +714,7 @@
 
       <!-- YAKINDA -->
       <div class="product-card fade-in" style="border: 2px dashed rgba(92,122,46,0.3); background: rgba(92,122,46,0.03);">
-        <div class="product-icon-wrap" style="background: transparent;">🔜</div>
+         <div class="product-icon-wrap"><img src="images/daha_fazla.webp" alt="daha_fazla" /></div>
         <div class="product-body">
           <span class="product-badge" style="background: rgba(196,150,58,0.15); color: var(--gold);">Çok Yakında</span>
           <div class="product-name">Daha Fazla Ürün</div>
@@ -696,6 +726,43 @@
       </div>
 
     </div>
+    <!-- NATÜREL SIZMA ZEYTİNYAĞI -->
+<!-- ÖNE ÇIKAN ÜRÜN -->
+<section id="one-cikan">
+  <div class="oo-inner">
+    <div class="oo-stage fade-in">
+      <div class="oo-glow"></div>
+      <img class="oo-front" src="images/zeytinyagi-on.webp" alt="Naturel Sızma Zeytinyağı 5L teneke">
+      <div class="oo-back-wrap">
+        <img class="oo-back" src="images/zeytinyagi-arka.webp" alt="Naturel Sızma Zeytinyağı arka etiket">
+        <div class="oo-back-cap">Arka Etiket</div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="oo-eyebrow">
+        <span class="lbl">Öne Çıkan Ürün</span>
+        <span class="rule"></span>
+        <span class="loc">Antakya · Hatay</span>
+      </div>
+      <h2 class="oo-title">Naturel Sızma<br>Zeytinyağı</h2>
+      <p class="oo-desc">Antakya'nın bereketli topraklarında, ilaçsız yetiştirilen Gemlik tipi zeytinlerden geleneksel yöntemlerle sıkıldı. Toprağın gerçek lezzetini ve Hatay'ın gastronomi mirasını sofranıza taşır.</p>
+      <div class="oo-chips">
+        <span class="oo-chip">Gemlik Tipi Zeytin</span>
+        <span class="oo-chip">Geleneksel Sıkım</span>
+        <span class="oo-chip">İlaçsız Tarım</span>
+        <span class="oo-chip">5 L Teneke</span>
+      </div>
+      <div class="oo-foot">
+        <div>
+          <div class="oo-price">2.500 ₺</div>
+          <div class="oo-price-sub">5 litre teneke · tek fiyat</div>
+        </div>
+        <a class="oo-cta" href="https://wa.me/905441230776?text=Naturel%20Sızma%20Zeytinyağı%20(5L)%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
   </div>
 </section>
 
