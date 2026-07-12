@@ -1,0 +1,80 @@
+/* ============================================================
+   HATAY HASADI – ORTAK STİLLER
+   Tüm sayfalarda kullanılan tema değişkenleri, navigasyon,
+   footer ve mobil menü stilleri. Sayfaya özgü stiller ilgili
+   HTML dosyasının kendi <style> bloğunda kalır.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:    #F7F2E8;
+  --cream-dk: #EDE5D0;
+  --green:    #5C7A2E;
+  --green-dk: #3E5420;
+  --brown:    #3D2B1F;
+  --brown-lt: #7A5C3E;
+  --gold:     #C4963A;
+  --gold-lt:  #E8C97A;
+  --text:     #2D1F10;
+  --text-lt:  #6B4E35;
+  --white:    #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+section { scroll-margin-top: 100px; }
+
+/* ── NAV ── */
+nav.hh-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 2.5rem; background: rgba(247,242,232,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(92,122,46,0.15); }
+.nav-brand { display: flex; align-items: center; gap: 0.1rem; text-decoration: none; }
+.nav-logo-wrapper { display: flex; align-items: center; justify-content: center; background: transparent; }
+.nav-logo-img { height: 76px; width: auto; display: block; filter: drop-shadow(0 2px 4px rgba(61,43,31,0.1)); transition: transform 0.3s ease; }
+.nav-brand:hover .nav-logo-img { transform: rotate(-5deg) scale(1.05); }
+.nav-brand-text { line-height: 1.1; }
+.nav-brand-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 27px; color: var(--brown); letter-spacing: 0.5px; }
+.nav-brand-text span { font-size: 11.5px; text-transform: uppercase; letter-spacing: 2px; color: var(--green); font-weight: 700; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a { text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-lt); transition: color 0.2s; }
+.nav-links a:hover { color: var(--green); }
+.nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; padding: 0.55rem 1.25rem; border-radius: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--green-dk); }
+
+/* ── MOBİL MENÜ ── */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 200; }
+.hamburger span { display: block; width: 24px; height: 2.5px; background: var(--brown); border-radius: 2px; transition: all 0.3s ease; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(45,31,16,0.5); z-index: 90; opacity: 0; transition: opacity 0.3s ease; }
+.mobile-overlay.active { display: block; opacity: 1; }
+
+@media (max-width: 900px) {
+  nav.hh-nav { padding: 0.75rem 1.25rem; }
+  .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--cream); flex-direction: column; align-items: flex-start; padding: 5rem 2rem 2rem; gap: 0; z-index: 150; box-shadow: -4px 0 24px rgba(0,0,0,0.15); transition: right 0.35s ease; display: flex; }
+  .nav-links.active { right: 0; }
+  .nav-links li { width: 100%; border-bottom: 1px solid rgba(92,122,46,0.12); }
+  .nav-links a { display: block; padding: 1rem 0; font-size: 15px; letter-spacing: 1px; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .nav-links .mobile-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--green); color: #fff; padding: 0.75rem 1.5rem; border-radius: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; text-align: center; margin-top: 1rem; width: 100%; }
+}
+@media (min-width: 901px) {
+  .mobile-cta { display: none !important; }
+}
+
+/* ── FOOTER ── */
+footer.hh-footer { background: var(--brown); color: rgba(247,242,232,0.7); padding: 3rem 2rem 2rem; }
+.footer-inner { max-width: 1140px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 3rem; margin-bottom: 2rem; }
+.footer-brand { flex: 1.5; min-width: 200px; }
+.footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--cream); margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 13px; line-height: 1.7; }
+.footer-col { flex: 1; min-width: 140px; }
+.footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--cream); margin-bottom: 1rem; }
+.footer-col a { display: block; font-size: 13px; color: rgba(247,242,232,0.6); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--gold-lt); }
+.footer-bottom { max-width: 1140px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 0.5rem; }
+
+/* ── ANİMASYON ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
