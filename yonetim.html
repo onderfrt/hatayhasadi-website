@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yönetim Paneli – Hatay Hasadı</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="Hatayhasadi-SeffafLogo2_1.PNG">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body { display: flex; flex-direction: column; min-height: 100vh; }
+  main { flex: 1; max-width: 1140px; width: 100%; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--brown); }
+  .loading { text-align: center; color: var(--text-lt); padding: 4rem 1rem; }
+  .hidden { display: none !important; }
+
+  /* Erişim yok */
+  .denied { max-width: 520px; margin: 3rem auto; text-align: center; background: var(--white); border: 1px solid rgba(92,122,46,0.15); border-radius: 16px; padding: 2.5rem 2rem; }
+  .denied h2 { font-family: 'Playfair Display', serif; color: var(--brown); margin-bottom: 0.75rem; }
+  .denied p { font-size: 14px; color: var(--text-lt); margin-bottom: 1.25rem; }
+  .denied a { display: inline-flex; background: var(--green); color: #fff; padding: 0.7rem 1.6rem; border-radius: 24px; font-size: 13.5px; font-weight: 700; text-decoration: none; }
+
+  /* İstatistik kartları */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+  .stat { background: var(--white); border: 1px solid rgba(92,122,46,0.15); border-radius: 14px; padding: 1.1rem 1.3rem; }
+  .stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--green-dk); line-height: 1.2; }
+  .stat span { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-lt); font-weight: 700; }
+
+  /* Sekmeler */
+  .admin-tabs { display: flex; gap: 0.5rem; border-bottom: 2px solid rgba(92,122,46,0.15); margin-bottom: 1.5rem; }
+  .admin-tab { background: none; border: none; padding: 0.8rem 1.3rem; font-family: inherit; font-size: 14.5px; font-weight: 700; color: var(--text-lt); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+  .admin-tab.active { color: var(--green-dk); border-bottom-color: var(--green); }
+
+  /* Filtreler */
+  .filters { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.25rem; }
+  .chip { border: 1.5px solid rgba(92,122,46,0.3); background: var(--white); color: var(--text-lt); padding: 0.4rem 1rem; border-radius: 20px; font-size: 12.5px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+  .chip.active { background: var(--green); border-color: var(--green); color: #fff; }
+  .search-box { flex: 1; min-width: 200px; max-width: 320px; margin-left: auto; }
+  .search-box input { width: 100%; padding: 0.55rem 0.9rem; border: 1.5px solid rgba(92,122,46,0.3); border-radius: 20px; font-family: inherit; font-size: 13.5px; background: var(--white); }
+  .search-box input:focus { outline: none; border-color: var(--green); }
+
+  /* Sipariş kartları */
+  .adm-order { background: var(--white); border: 1px solid rgba(92,122,46,0.15); border-radius: 14px; padding: 1.1rem 1.35rem; margin-bottom: 0.9rem; }
+  .adm-order-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .adm-no { font-weight: 700; color: var(--brown); font-size: 15px; }
+  .adm-date { font-size: 12.5px; color: var(--text-lt); }
+  .adm-customer { font-size: 13.5px; color: var(--text); margin-top: 2px; }
+  .adm-customer a { color: var(--green); text-decoration: none; font-weight: 700; }
+  .adm-customer a:hover { text-decoration: underline; }
+  .adm-right { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .adm-total { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--green-dk); }
+  .status-sel { padding: 0.45rem 0.8rem; border-radius: 10px; border: 1.5px solid rgba(92,122,46,0.35); font-family: inherit; font-size: 13px; font-weight: 700; background: var(--cream); color: var(--text); cursor: pointer; }
+  .status-sel:focus { outline: none; border-color: var(--green); }
+  .status-sel.st-alindi { background: #FFF4E0; border-color: #E8B65A; }
+  .status-sel.st-hazirlaniyor { background: #FFF9D6; border-color: #D8C24A; }
+  .status-sel.st-kargoda { background: #E3F0FA; border-color: #6FA8D6; }
+  .status-sel.st-teslim { background: rgba(92,122,46,0.12); border-color: var(--green); }
+  .status-sel.st-iptal { background: #FBE9E7; border-color: #D67B6F; }
+  .adm-items { margin-top: 0.75rem; border-top: 1px dashed rgba(61,43,31,0.15); padding-top: 0.65rem; font-size: 13px; color: var(--text-lt); display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; }
+  .adm-items span b { color: var(--text); font-weight: 700; }
+  .adm-saved { font-size: 12px; color: var(--green-dk); font-weight: 700; opacity: 0; transition: opacity 0.3s; }
+  .adm-saved.show { opacity: 1; }
+  .empty-note { text-align: center; color: var(--text-lt); font-size: 14px; padding: 2.5rem 1rem; }
+
+  /* Yorum moderasyonu */
+  .adm-review { background: var(--white); border: 1px solid rgba(92,122,46,0.15); border-radius: 14px; padding: 1rem 1.3rem; margin-bottom: 0.8rem; display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; flex-wrap: wrap; }
+  .adm-review .stars { color: var(--gold); font-size: 13px; letter-spacing: 1.5px; }
+  .adm-review .who { font-size: 13.5px; font-weight: 700; color: var(--brown); }
+  .adm-review .prod { font-size: 12px; color: var(--green-dk); font-weight: 700; }
+  .adm-review .txt { font-size: 13.5px; color: var(--text); margin-top: 4px; max-width: 640px; }
+  .btn-del { background: none; border: 1.5px solid #D67B6F; color: #b3261e; padding: 0.4rem 1rem; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; flex-shrink: 0; }
+  .btn-del:hover { background: #FBE9E7; }
+
+  .refresh-btn { background: none; border: 1.5px solid rgba(92,122,46,0.35); color: var(--green-dk); padding: 0.45rem 1.1rem; border-radius: 20px; font-size: 12.5px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .refresh-btn:hover { background: rgba(92,122,46,0.08); }
+</style>
+</head>
+<body>
+
+<main>
+  <div id="viewLoading" class="loading">Yükleniyor…</div>
+
+  <div id="viewDenied" class="denied hidden">
+    <h2>Erişim Yetkiniz Yok</h2>
+    <p>Bu sayfa yalnızca yöneticiler içindir. Yönetici iseniz doğru hesapla giriş yaptığınızdan emin olun.</p>
+    <a href="hesap.html">Giriş Yap</a>
+  </div>
+
+  <div id="viewPanel" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+      <h1 class="page-title">Yönetim Paneli</h1>
+      <button class="refresh-btn" id="btnRefresh">↻ Yenile</button>
+    </div>
+
+    <div class="stats" id="statsRow"></div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-atab="orders">Siparişler</button>
+      <button class="admin-tab" data-atab="reviews">Yorumlar</button>
+    </div>
+
+    <!-- SİPARİŞLER -->
+    <div id="atab-orders">
+      <div class="filters">
+        <button class="chip active" data-st="">Tümü</button>
+        <button class="chip" data-st="alindi">Alındı</button>
+        <button class="chip" data-st="hazirlaniyor">Hazırlanıyor</button>
+        <button class="chip" data-st="kargoda">Kargoda</button>
+        <button class="chip" data-st="teslim">Teslim</button>
+        <button class="chip" data-st="iptal">İptal</button>
+        <div class="search-box"><input id="orderSearch" type="search" placeholder="Sipariş no veya müşteri ara…"></div>
+      </div>
+      <div id="ordersWrap"><div class="loading">Siparişler yükleniyor…</div></div>
+    </div>
+
+    <!-- YORUMLAR -->
+    <div id="atab-reviews" class="hidden">
+      <div id="reviewsWrap"><div class="loading">Yorumlar yükleniyor…</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="js/products.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/vendor/supabase.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script>
+(function () {
+  const STATUSES = { alindi: 'Alındı', hazirlaniyor: 'Hazırlanıyor', kargoda: 'Kargoda', teslim: 'Teslim Edildi', iptal: 'İptal' };
+  let allOrders = [];
+  let statusFilter = '';
+  let searchTerm = '';
+
+  const views = ['viewLoading', 'viewDenied', 'viewPanel'];
+  function show(id) { views.forEach(v => document.getElementById(v).classList.toggle('hidden', v !== id)); }
+  function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+  /* ---------- Giriş / yetki kontrolü ---------- */
+  async function boot() {
+    if (typeof HHAuth === 'undefined' || !HHAuth.isConfigured()) { show('viewDenied'); return; }
+    if (!HHAuth.isReady()) return; // hh-auth-ready bekle
+    const ok = await HHAuth.isAdmin().catch(() => false);
+    if (!ok) { show('viewDenied'); return; }
+    show('viewPanel');
+    loadOrders();
+    loadReviews();
+  }
+  document.addEventListener('hh-auth-ready', boot);
+  boot();
+
+  /* ---------- Siparişler ---------- */
+  async function loadOrders() {
+    const wrap = document.getElementById('ordersWrap');
+    try {
+      allOrders = await HHAuth.getAllOrders();
+      renderStats();
+      renderOrders();
+    } catch (e) {
+      wrap.innerHTML = '<div class="empty-note">Siparişler yüklenemedi: ' + esc(e.message) + '</div>';
+    }
+  }
+
+  function renderStats() {
+    const active = allOrders.filter(o => o.status !== 'iptal');
+    const revenue = active.reduce((s, o) => s + Number(o.total), 0);
+    const pending = allOrders.filter(o => o.status === 'alindi' || o.status === 'hazirlaniyor').length;
+    const shipped = allOrders.filter(o => o.status === 'kargoda').length;
+    document.getElementById('statsRow').innerHTML = `
+      <div class="stat"><strong>${allOrders.length}</strong><span>Toplam Sipariş</span></div>
+      <div class="stat"><strong>${pending}</strong><span>Bekleyen</span></div>
+      <div class="stat"><strong>${shipped}</strong><span>Kargoda</span></div>
+      <div class="stat"><strong>${formatTL(revenue)}</strong><span>Toplam Ciro</span></div>`;
+  }
+
+  function renderOrders() {
+    const wrap = document.getElementById('ordersWrap');
+    let list = allOrders;
+    if (statusFilter) list = list.filter(o => o.status === statusFilter);
+    if (searchTerm) {
+      const q = searchTerm.toLowerCase();
+      list = list.filter(o =>
+        String(o.order_no).includes(q) ||
+        (o.customer && (o.customer.full_name || '').toLowerCase().includes(q)) ||
+        (o.customer && (o.customer.email || '').toLowerCase().includes(q)));
+    }
+    if (!list.length) {
+      wrap.innerHTML = '<div class="empty-note">Bu kritere uyan sipariş yok.</div>';
+      return;
+    }
+    wrap.innerHTML = list.map(o => {
+      const date = new Date(o.created_at).toLocaleString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+      const c = o.customer || {};
+      const rawPhone = (c.phone || '').replace(/\D/g, '');
+      const waPhone = rawPhone.startsWith('90') ? rawPhone : rawPhone.startsWith('0') ? '9' + rawPhone : '90' + rawPhone;
+      const phoneLink = rawPhone ? `<a href="https://wa.me/${waPhone}" target="_blank">${esc(c.phone)}</a>` : '';
+      const items = (o.order_items || []).map(i => `<span>${esc(i.product_name)} <b>${esc(i.size_label)} × ${i.qty}</b></span>`).join('');
+      const opts = Object.entries(STATUSES).map(([k, v]) => `<option value="${k}"${k === o.status ? ' selected' : ''}>${v}</option>`).join('');
+      return `
+        <div class="adm-order" data-id="${o.id}">
+          <div class="adm-order-head">
+            <div>
+              <span class="adm-no">Sipariş #${o.order_no}</span> <span class="adm-date">· ${date}</span>
+              <div class="adm-customer">${esc(c.full_name || 'İsimsiz')} ${phoneLink ? '· ' + phoneLink : ''} ${c.email ? '· ' + esc(c.email) : ''}</div>
+            </div>
+            <div class="adm-right">
+              <span class="adm-saved" id="saved-${o.id}">Kaydedildi ✓</span>
+              <select class="status-sel st-${o.status}" data-order="${o.id}">${opts}</select>
+              <span class="adm-total">${formatTL(Number(o.total))}</span>
+            </div>
+          </div>
+          <div class="adm-items">${items}</div>
+        </div>`;
+    }).join('');
+
+    // Durum değişikliği
+    wrap.querySelectorAll('.status-sel').forEach(sel => {
+      sel.addEventListener('change', async () => {
+        const id = sel.dataset.order;
+        const val = sel.value;
+        sel.disabled = true;
+        try {
+          await HHAuth.updateOrderStatus(id, val);
+          sel.className = 'status-sel st-' + val;
+          const o = allOrders.find(x => x.id === id);
+          if (o) o.status = val;
+          renderStats();
+          const saved = document.getElementById('saved-' + id);
+          saved.classList.add('show');
+          setTimeout(() => saved.classList.remove('show'), 2000);
+        } catch (e) {
+          alert('Durum güncellenemedi: ' + e.message);
+        } finally { sel.disabled = false; }
+      });
+    });
+  }
+
+  /* Filtre çipleri */
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      statusFilter = chip.dataset.st;
+      renderOrders();
+    });
+  });
+  document.getElementById('orderSearch').addEventListener('input', (e) => {
+    searchTerm = e.target.value.trim();
+    renderOrders();
+  });
+
+  /* ---------- Yorum moderasyonu ---------- */
+  async function loadReviews() {
+    const wrap = document.getElementById('reviewsWrap');
+    try {
+      const reviews = await HHAuth.getAllReviewsAdmin();
+      if (!reviews.length) {
+        wrap.innerHTML = '<div class="empty-note">Henüz yorum yok.</div>';
+        return;
+      }
+      wrap.innerHTML = reviews.map(r => {
+        const p = getProduct(r.product_id);
+        const date = new Date(r.created_at).toLocaleDateString('tr-TR');
+        return `
+          <div class="adm-review">
+            <div>
+              <div><span class="who">${esc(r.display_name)}</span> · <span class="prod">${p ? esc(p.name) : esc(r.product_id)}</span> · <span class="adm-date">${date}</span></div>
+              <div class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+              <div class="txt">${esc(r.comment)}</div>
+            </div>
+            <button class="btn-del" data-rid="${r.id}">Yorumu Sil</button>
+          </div>`;
+      }).join('');
+      wrap.querySelectorAll('.btn-del').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          if (!confirm('Bu yorum kalıcı olarak silinsin mi?')) return;
+          btn.disabled = true;
+          try {
+            await HHAuth.deleteReview(parseInt(btn.dataset.rid, 10));
+            btn.closest('.adm-review').remove();
+          } catch (e) {
+            alert('Silinemedi: ' + e.message);
+            btn.disabled = false;
+          }
+        });
+      });
+    } catch (e) {
+      wrap.innerHTML = '<div class="empty-note">Yorumlar yüklenemedi: ' + esc(e.message) + '</div>';
+    }
+  }
+
+  /* Sekmeler ve yenile */
+  document.querySelectorAll('.admin-tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.admin-tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById('atab-orders').classList.toggle('hidden', t.dataset.atab !== 'orders');
+      document.getElementById('atab-reviews').classList.toggle('hidden', t.dataset.atab !== 'reviews');
+    });
+  });
+  document.getElementById('btnRefresh').addEventListener('click', () => { loadOrders(); loadReviews(); });
+})();
+</script>
+</body>
+</html>

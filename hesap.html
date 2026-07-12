@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hesabım – Hatay Hasadı</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="Hatayhasadi-SeffafLogo2_1.PNG">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+
+  main { flex: 1; max-width: 880px; width: 100%; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--brown); margin-bottom: 1.5rem; }
+
+  .card { background: var(--white); border: 1px solid rgba(92,122,46,0.15); border-radius: 16px; padding: 1.75rem; margin-bottom: 1.5rem; }
+  .card h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--brown); margin-bottom: 1rem; }
+
+  /* Setup notice */
+  .setup-box { border: 1px dashed rgba(92,122,46,0.4); background: rgba(92,122,46,0.04); border-radius: 16px; padding: 2rem; }
+  .setup-box h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--brown); margin-bottom: 0.75rem; }
+  .setup-box p { font-size: 14px; color: var(--text-lt); margin-bottom: 0.75rem; }
+  .setup-box code { background: var(--cream-dk); padding: 2px 8px; border-radius: 6px; font-size: 13px; }
+  .setup-box ol { margin: 0.75rem 0 0 1.25rem; font-size: 14px; color: var(--text); }
+  .setup-box li { margin-bottom: 0.5rem; }
+
+  /* Auth tabs */
+  .auth-card { max-width: 460px; margin: 0 auto; }
+  .auth-tabs { display: flex; border-bottom: 2px solid rgba(92,122,46,0.15); margin-bottom: 1.5rem; }
+  .auth-tab { flex: 1; background: none; border: none; padding: 0.8rem; font-family: inherit; font-size: 14px; font-weight: 700; color: var(--text-lt); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+  .auth-tab.active { color: var(--green-dk); border-bottom-color: var(--green); }
+  .field { margin-bottom: 1rem; }
+  .field label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-lt); margin-bottom: 0.35rem; }
+  .field input { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid rgba(92,122,46,0.3); border-radius: 10px; font-family: inherit; font-size: 14.5px; background: var(--cream); color: var(--text); }
+  .field input:focus { outline: none; border-color: var(--green); background: #fff; }
+  .btn-full { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--green); color: #fff; border: none; padding: 0.85rem 1.5rem; border-radius: 30px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+  .btn-full:hover { background: var(--green-dk); }
+  .btn-full:disabled { opacity: 0.6; cursor: wait; }
+  .msg { border-radius: 10px; padding: 0.75rem 1rem; font-size: 13.5px; margin-bottom: 1rem; display: none; }
+  .msg.err { display: block; background: #fdecea; color: #b3261e; border: 1px solid #f5c6c2; }
+  .msg.ok { display: block; background: rgba(92,122,46,0.1); color: var(--green-dk); border: 1px solid rgba(92,122,46,0.3); }
+
+  /* Account */
+  .account-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .btn-ghost { background: none; border: 1.5px solid rgba(61,43,31,0.25); color: var(--brown); padding: 0.5rem 1.2rem; border-radius: 24px; font-size: 12.5px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+  .btn-ghost:hover { border-color: #b3261e; color: #b3261e; }
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 640px) { .profile-grid { grid-template-columns: 1fr; } }
+  .btn-save { margin-top: 0.5rem; background: var(--green); color: #fff; border: none; padding: 0.6rem 1.5rem; border-radius: 24px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .btn-save:hover { background: var(--green-dk); }
+
+  .order { border: 1px solid rgba(92,122,46,0.15); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+  .order-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+  .order-no { font-weight: 700; color: var(--brown); font-size: 14.5px; }
+  .order-date { font-size: 12.5px; color: var(--text-lt); }
+  .order-status { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; background: rgba(92,122,46,0.12); color: var(--green-dk); padding: 3px 12px; border-radius: 12px; }
+  .order-items { font-size: 13.5px; color: var(--text); }
+  .order-items li { list-style: none; display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px dashed rgba(61,43,31,0.08); }
+  .order-items li:last-child { border-bottom: none; }
+  .order-total { text-align: right; font-weight: 700; color: var(--green-dk); margin-top: 0.5rem; font-size: 15px; }
+  .empty-orders { text-align: center; color: var(--text-lt); font-size: 14px; padding: 1.5rem 1rem; }
+  .empty-orders a { color: var(--green); font-weight: 700; }
+
+  .link-btn { display: block; margin: 0.9rem auto 0; background: none; border: none; font-size: 13px; color: var(--green-dk); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; font-family: inherit; }
+  .link-btn:hover { color: var(--green); }
+  .hidden { display: none !important; }
+  .loading { text-align: center; color: var(--text-lt); padding: 3rem 1rem; }
+
+</style>
+</head>
+<body>
+
+<main>
+  <!-- Yükleniyor -->
+  <div id="viewLoading" class="loading">Yükleniyor…</div>
+
+  <!-- Supabase yapılandırılmamış -->
+  <div id="viewSetup" class="setup-box hidden">
+    <h2>Üyelik sistemi henüz aktif değil</h2>
+    <p>Üyelik altyapısı kuruldu ancak Supabase bağlantısı yapılandırılmadı. Aktifleştirmek için:</p>
+    <ol>
+      <li><a href="https://supabase.com" target="_blank" style="color:var(--green);font-weight:700;">supabase.com</a> üzerinde ücretsiz bir proje oluşturun.</li>
+      <li><code>supabase/schema.sql</code> dosyasını SQL Editor'de çalıştırın.</li>
+      <li>Project Settings → API sayfasındaki URL ve anon key değerlerini <code>js/supabase-config.js</code> dosyasına yapıştırın.</li>
+    </ol>
+    <p style="margin-top:0.75rem;">Detaylı adımlar için repodaki <code>SUPABASE-KURULUM.md</code> dosyasına bakın. Bu süreçte sepet ve WhatsApp siparişleri normal şekilde çalışmaya devam eder.</p>
+  </div>
+
+  <!-- Giriş / Kayıt -->
+  <div id="viewAuth" class="hidden">
+    <div class="card auth-card">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin">Giriş Yap</button>
+        <button class="auth-tab" id="tabRegister">Üye Ol</button>
+      </div>
+      <div class="msg" id="authMsg"></div>
+
+      <form id="formLogin">
+        <div class="field"><label for="liEmail">E-posta</label><input id="liEmail" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="liPass">Şifre</label><input id="liPass" type="password" required autocomplete="current-password"></div>
+        <button class="btn-full" type="submit">Giriş Yap</button>
+        <button class="link-btn" type="button" id="btnForgot">Şifremi unuttum</button>
+      </form>
+
+      <form id="formForgot" class="hidden">
+        <p style="font-size:13.5px;color:var(--text-lt);margin-bottom:1rem;">E-posta adresinizi girin; şifre sıfırlama bağlantısı gönderelim.</p>
+        <div class="field"><label for="fgEmail">E-posta</label><input id="fgEmail" type="email" required autocomplete="email"></div>
+        <button class="btn-full" type="submit">Sıfırlama Bağlantısı Gönder</button>
+        <button class="link-btn" type="button" id="btnBackLogin">← Girişe dön</button>
+      </form>
+
+      <form id="formRegister" class="hidden">
+        <div class="field"><label for="rgName">Ad Soyad</label><input id="rgName" type="text" required autocomplete="name"></div>
+        <div class="field"><label for="rgPhone">Telefon (isteğe bağlı)</label><input id="rgPhone" type="tel" autocomplete="tel" placeholder="05xx xxx xx xx"></div>
+        <div class="field"><label for="rgEmail">E-posta</label><input id="rgEmail" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="rgPass">Şifre (en az 6 karakter)</label><input id="rgPass" type="password" required minlength="6" autocomplete="new-password"></div>
+        <button class="btn-full" type="submit">Üye Ol</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Yeni şifre belirleme (e-postadaki bağlantıdan gelindiğinde) -->
+  <div id="viewRecovery" class="hidden">
+    <div class="card auth-card">
+      <h2>Yeni Şifre Belirleyin</h2>
+      <div class="msg" id="recoveryMsg"></div>
+      <form id="formRecovery">
+        <div class="field"><label for="rcPass">Yeni Şifre (en az 6 karakter)</label><input id="rcPass" type="password" required minlength="6" autocomplete="new-password"></div>
+        <div class="field"><label for="rcPass2">Yeni Şifre (tekrar)</label><input id="rcPass2" type="password" required minlength="6" autocomplete="new-password"></div>
+        <button class="btn-full" type="submit">Şifreyi Güncelle</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Hesabım -->
+  <div id="viewAccount" class="hidden">
+    <div class="account-head">
+      <h1 class="page-title" style="margin-bottom:0;">Hesabım</h1>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a class="btn-ghost hidden" id="btnAdmin" href="yonetim.html" style="text-decoration:none;border-color:var(--green);color:var(--green-dk);">⚙ Yönetim Paneli</a>
+        <button class="btn-ghost" id="btnLogout">Çıkış Yap</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Profil Bilgilerim</h2>
+      <div class="msg" id="profileMsg"></div>
+      <div class="profile-grid">
+        <div class="field"><label for="pfName">Ad Soyad</label><input id="pfName" type="text"></div>
+        <div class="field"><label for="pfPhone">Telefon</label><input id="pfPhone" type="tel"></div>
+      </div>
+      <div class="field"><label for="pfEmail">E-posta</label><input id="pfEmail" type="email" disabled style="opacity:0.7;"></div>
+      <button class="btn-save" id="btnSaveProfile">Bilgileri Güncelle</button>
+    </div>
+
+    <div class="card">
+      <h2>Siparişlerim</h2>
+      <div id="ordersList"><div class="loading">Siparişler yükleniyor…</div></div>
+    </div>
+  </div>
+</main>
+
+<script src="js/vendor/supabase.js"></script>
+<script src="js/products.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script>
+(function () {
+  const views = ['viewLoading', 'viewSetup', 'viewAuth', 'viewAccount', 'viewRecovery'];
+  function show(id) {
+    views.forEach(v => document.getElementById(v).classList.toggle('hidden', v !== id));
+  }
+  function setMsg(el, text, type) {
+    el.className = 'msg' + (text ? ' ' + type : '');
+    el.textContent = text || '';
+  }
+
+  const authMsg = document.getElementById('authMsg');
+  const profileMsg = document.getElementById('profileMsg');
+
+  /* Sekmeler */
+  const tabLogin = document.getElementById('tabLogin');
+  const tabRegister = document.getElementById('tabRegister');
+  const formLogin = document.getElementById('formLogin');
+  const formRegister = document.getElementById('formRegister');
+  function switchTab(login) {
+    tabLogin.classList.toggle('active', login);
+    tabRegister.classList.toggle('active', !login);
+    formLogin.classList.toggle('hidden', !login);
+    formRegister.classList.toggle('hidden', login);
+    setMsg(authMsg, '');
+  }
+  tabLogin.addEventListener('click', () => switchTab(true));
+  tabRegister.addEventListener('click', () => switchTab(false));
+
+  /* Ana akış */
+  async function render() {
+    if (!HHAuth.isConfigured()) { show('viewSetup'); return; }
+    const user = await HHAuth.getUser().catch(() => null);
+    if (!user) { show('viewAuth'); return; }
+    show('viewAccount');
+    loadProfile();
+    loadOrders();
+    HHAuth.isAdmin().then(ok => {
+      document.getElementById('btnAdmin').classList.toggle('hidden', !ok);
+    }).catch(() => {});
+  }
+
+  async function loadProfile() {
+    try {
+      const p = await HHAuth.getProfile();
+      document.getElementById('pfName').value = p.full_name || '';
+      document.getElementById('pfPhone').value = p.phone || '';
+      document.getElementById('pfEmail').value = p.email || '';
+    } catch (e) { setMsg(profileMsg, 'Profil yüklenemedi: ' + e.message, 'err'); }
+  }
+
+  async function loadOrders() {
+    const wrap = document.getElementById('ordersList');
+    try {
+      const orders = await HHAuth.getMyOrders();
+      if (!orders.length) {
+        wrap.innerHTML = '<div class="empty-orders">Henüz siparişiniz yok.<br><a href="index.html#urunler">Ürünlere göz atın →</a></div>';
+        return;
+      }
+      const statusMap = { alindi: 'Alındı', hazirlaniyor: 'Hazırlanıyor', kargoda: 'Kargoda', teslim: 'Teslim Edildi', iptal: 'İptal' };
+      wrap.innerHTML = orders.map(o => {
+        const date = new Date(o.created_at).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+        const items = (o.order_items || []).map(i =>
+          `<li><span>${i.product_name} (${i.size_label}) × ${i.qty}</span><span>${formatTL(i.unit_price * i.qty)}</span></li>`).join('');
+        return `
+          <div class="order">
+            <div class="order-head">
+              <div><span class="order-no">Sipariş #${o.order_no}</span> <span class="order-date">· ${date}</span></div>
+              <span class="order-status">${statusMap[o.status] || o.status}</span>
+            </div>
+            <ul class="order-items">${items}</ul>
+            <div class="order-total">Toplam: ${formatTL(Number(o.total))}</div>
+          </div>`;
+      }).join('');
+    } catch (e) {
+      wrap.innerHTML = '<div class="empty-orders">Siparişler yüklenemedi: ' + e.message + '</div>';
+    }
+  }
+
+  /* Giriş */
+  formLogin.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = formLogin.querySelector('button'); btn.disabled = true;
+    try {
+      await HHAuth.signIn(document.getElementById('liEmail').value.trim(), document.getElementById('liPass').value);
+      render();
+    } catch (err) {
+      const m = /invalid login credentials/i.test(err.message) ? 'E-posta veya şifre hatalı.' :
+                /email not confirmed/i.test(err.message) ? 'Lütfen önce e-postanıza gönderilen doğrulama bağlantısına tıklayın.' : err.message;
+      setMsg(authMsg, m, 'err');
+    } finally { btn.disabled = false; }
+  });
+
+  /* Kayıt */
+  formRegister.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = formRegister.querySelector('button'); btn.disabled = true;
+    try {
+      const res = await HHAuth.signUp(
+        document.getElementById('rgEmail').value.trim(),
+        document.getElementById('rgPass').value,
+        document.getElementById('rgName').value.trim(),
+        document.getElementById('rgPhone').value.trim()
+      );
+      if (res.needsConfirmation) {
+        setMsg(authMsg, 'Kaydınız alındı! E-postanıza gönderilen doğrulama bağlantısına tıkladıktan sonra giriş yapabilirsiniz.', 'ok');
+        switchTab(true);
+        setMsg(authMsg, 'Kaydınız alındı! E-postanıza gönderilen doğrulama bağlantısına tıkladıktan sonra giriş yapabilirsiniz.', 'ok');
+      } else {
+        render();
+      }
+    } catch (err) {
+      const m = /already registered/i.test(err.message) ? 'Bu e-posta ile zaten bir hesap var. Giriş yapmayı deneyin.' : err.message;
+      setMsg(authMsg, m, 'err');
+    } finally { btn.disabled = false; }
+  });
+
+  /* Profil güncelle */
+  document.getElementById('btnSaveProfile').addEventListener('click', async () => {
+    try {
+      await HHAuth.updateProfile(document.getElementById('pfName').value.trim(), document.getElementById('pfPhone').value.trim());
+      setMsg(profileMsg, 'Bilgileriniz güncellendi ✓', 'ok');
+    } catch (e) { setMsg(profileMsg, 'Güncellenemedi: ' + e.message, 'err'); }
+  });
+
+  /* Şifremi unuttum */
+  const formForgot = document.getElementById('formForgot');
+  document.getElementById('btnForgot').addEventListener('click', () => {
+    formLogin.classList.add('hidden');
+    formForgot.classList.remove('hidden');
+    document.getElementById('fgEmail').value = document.getElementById('liEmail').value;
+    setMsg(authMsg, '');
+  });
+  document.getElementById('btnBackLogin').addEventListener('click', () => {
+    formForgot.classList.add('hidden');
+    formLogin.classList.remove('hidden');
+    setMsg(authMsg, '');
+  });
+  formForgot.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = formForgot.querySelector('button[type=submit]'); btn.disabled = true;
+    try {
+      await HHAuth.resetPassword(document.getElementById('fgEmail').value.trim());
+      setMsg(authMsg, 'Sıfırlama bağlantısı e-postanıza gönderildi. Gelen kutunuzu (ve spam klasörünü) kontrol edin.', 'ok');
+    } catch (err) {
+      setMsg(authMsg, 'Bağlantı gönderilemedi: ' + err.message, 'err');
+    } finally { btn.disabled = false; }
+  });
+
+  /* Kurtarma bağlantısından gelindiğinde yeni şifre formu */
+  document.addEventListener('hh-password-recovery', () => show('viewRecovery'));
+  const formRecovery = document.getElementById('formRecovery');
+  const recoveryMsg = document.getElementById('recoveryMsg');
+  formRecovery.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const p1 = document.getElementById('rcPass').value;
+    const p2 = document.getElementById('rcPass2').value;
+    if (p1 !== p2) { setMsg(recoveryMsg, 'Şifreler birbiriyle uyuşmuyor.', 'err'); return; }
+    const btn = formRecovery.querySelector('button'); btn.disabled = true;
+    try {
+      await HHAuth.updatePassword(p1);
+      setMsg(recoveryMsg, 'Şifreniz güncellendi! Hesabınıza yönlendiriliyorsunuz…', 'ok');
+      setTimeout(render, 1200);
+    } catch (err) {
+      setMsg(recoveryMsg, 'Güncellenemedi: ' + err.message, 'err');
+    } finally { btn.disabled = false; }
+  });
+
+  /* Çıkış */
+  document.getElementById('btnLogout').addEventListener('click', async () => {
+    await HHAuth.signOut();
+    switchTab(true);
+    render();
+  });
+
+  /* Auth hazır olduğunda veya yapılandırma yoksa render et */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(render, 50));
+  } else {
+    setTimeout(render, 50);
+  }
+})();
+</script>
+</body>
+</html>

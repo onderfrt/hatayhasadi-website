@@ -15,60 +15,11 @@
 <link rel="icon" type="image/png" href="Hatayhasadi-SeffafLogo2_1.PNG">
 <link rel="apple-touch-icon" href="Hatayhasadi-SeffafLogo2_1.PNG">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --cream:    #F7F2E8;
-    --cream-dk: #EDE5D0;
-    --green:    #5C7A2E;
-    --green-dk: #3E5420;
-    --brown:    #3D2B1F;
-    --brown-lt: #7A5C3E;
-    --gold:     #C4963A;
-    --gold-lt:  #E8C97A;
-    --text:     #2D1F10;
-    --text-lt:  #6B4E35;
-    --white:    #FFFFFF;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); line-height: 1.7; overflow-x: hidden; }
-
-  /* NAV */
-  /* Logo */
-.nav-logo-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-}
-
-.nav-logo-img {
-  height: 80px;
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 2px 4px rgba(61, 43, 31, 0.1));
-  transition: transform 0.3s ease;
- 
-  /* mix-blend-mode: multiply; */
-}
-
-.nav-brand:hover .nav-logo-img {
-  transform: rotate(-5deg) scale(1.05);
-}
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.60rem 2.5rem; background: rgba(247,242,232,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(92,122,46,0.15); }
-  .nav-brand { display: flex; align-items: center; gap: 0.1rem; text-decoration: none; }
-  .nav-logo-badge { display: none; }
-  .nav-brand-text { line-height: 1.1; }
-  .nav-brand-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 28px; color: var(--brown); letter-spacing: 0.5px; }
-  .nav-brand-text span { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--green); font-weight: 700; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-lt); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--green); }
-  .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; padding: 0.55rem 1.25rem; border-radius: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: background 0.2s; }
-  .nav-cta:hover { background: var(--green-dk); }
-
+  
   /* HERO */
-  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--cream); padding: 7rem 2rem 4rem; }
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--cream); padding: 4rem 2rem; }
   .hero-bg-pattern { position: absolute; inset: 0; opacity: 0.04; background-image: repeating-linear-gradient(45deg, var(--brown) 0, var(--brown) 1px, transparent 0, transparent 50%); background-size: 20px 20px; }
   .hero-circle { position: absolute; border-radius: 50%; border: 1px solid rgba(92,122,46,0.12); }
   .hero-circle-1 { width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
@@ -230,46 +181,9 @@
   .b2b-card-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; padding: 0.75rem 1.5rem; border-radius: 24px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
   .b2b-card-cta:hover { background: var(--green-dk); }
 
-  /* FOOTER */
-  footer { background: var(--brown); color: rgba(247,242,232,0.7); padding: 3rem 2rem 2rem; }
-  .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 3rem; margin-bottom: 2rem; }
-  .footer-brand { flex: 1.5; min-width: 200px; }
-  .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--cream); margin-bottom: 0.5rem; }
-  .footer-brand p { font-size: 13px; line-height: 1.7; }
-  .footer-col { flex: 1; min-width: 140px; }
-  .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--cream); margin-bottom: 1rem; }
-  .footer-col a { display: block; font-size: 13px; color: rgba(247,242,232,0.6); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--gold-lt); }
-  .footer-bottom { max-width: 1140px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 0.5rem; }
+  /* RESPONSIVE (sayfaya özel) */
+  @media (max-width: 900px) { section { padding: 4rem 1.25rem; } }
 
-  /* RESPONSIVE */
-  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 200; }
-  .hamburger span { display: block; width: 24px; height: 2.5px; background: var(--brown); border-radius: 2px; transition: all 0.3s ease; }
-  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-  .hamburger.active span:nth-child(2) { opacity: 0; }
-  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-  .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(45,31,16,0.5); z-index: 90; opacity: 0; transition: opacity 0.3s ease; }
-  .mobile-overlay.active { display: block; opacity: 1; }
-
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.25rem; }
-    .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--cream); flex-direction: column; padding: 5rem 2rem 2rem; gap: 0; z-index: 150; box-shadow: -4px 0 24px rgba(0,0,0,0.15); transition: right 0.35s ease; display: flex; }
-    .nav-links.active { right: 0; }
-    .nav-links li { border-bottom: 1px solid rgba(92,122,46,0.12); }
-    .nav-links a { display: block; padding: 1rem 0; font-size: 15px; letter-spacing: 1px; }
-    .nav-cta { display: none; }
-    .hamburger { display: flex; }
-    .nav-links .mobile-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: #fff; padding: 0.75rem 1.5rem; border-radius: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; text-align: center; margin-top: 1rem; justify-content: center; }
-    section { padding: 4rem 1.25rem; }
-  }
-  @media (min-width: 901px) {
-    .mobile-cta { display: none !important; }
-  }
-
-  /* ANIMATIONS */
-  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .fade-in.visible { opacity: 1; transform: none; }
   /* SCROLL TO TOP */
   .scroll-top-btn { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; width: 48px; height: 48px; border-radius: 50%; background: var(--green); color: #fff; border: none; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
   .scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
@@ -304,34 +218,37 @@
   #one-cikan .oo-back-wrap { width: 100px; }
   #one-cikan .oo-back { width: 100px; }
 }
+
+  /* E-TİCARET EKLERİ */
+  a.product-icon-wrap { text-decoration: none; }
+  .product-name a { color: inherit; text-decoration: none; }
+  .product-name a:hover { color: var(--green-dk); text-decoration: underline; text-underline-offset: 3px; }
+  .order-row { justify-content: space-between; align-items: center; gap: 8px; }
+  .btn-detail { font-size: 12px; font-weight: 700; color: var(--brown-lt); text-decoration: none; border: 1.5px solid rgba(61,43,31,0.2); padding: 0.4rem 0.9rem; border-radius: 20px; transition: all 0.2s; }
+  .btn-detail:hover { border-color: var(--green); color: var(--green); }
+  .product-order-btn { border: none; cursor: pointer; font-family: inherit; }
+  .prd-name-link { color: inherit; text-decoration: none; }
+  .prd-name-link:hover { color: var(--green-dk); text-decoration: underline; text-underline-offset: 3px; }
+  #one-cikan .oo-cta-ghost { background: transparent; color: var(--gold-lt); border: 1.5px solid rgba(232,201,122,0.5); }
+  #one-cikan .oo-cta-ghost:hover { background: rgba(232,201,122,0.12); }
+  .size-row.selectable { cursor: pointer; border-radius: 8px; padding: 4px 8px; margin: 0 -8px; transition: background 0.15s; }
+  .size-row.selectable:hover { background: rgba(92,122,46,0.06); }
+  .size-row.selectable .size-label::before { content: ''; display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid rgba(92,122,46,0.4); margin-right: 7px; vertical-align: -1px; transition: all 0.15s; }
+  .size-row.selectable.sel .size-label::before { border-color: var(--green); background: var(--green); box-shadow: inset 0 0 0 2.5px var(--cream); }
+
+  /* SSS */
+  #sss { background: var(--white); }
+  .faq-list { max-width: 760px; margin: 2.5rem auto 0; }
+  .faq-item { border: 1px solid rgba(92,122,46,0.15); border-radius: 12px; background: var(--cream); margin-bottom: 0.75rem; overflow: hidden; }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 1rem 1.25rem; font-size: 14.5px; font-weight: 700; color: var(--brown); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; color: var(--green); font-weight: 400; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 1.25rem 1.1rem; font-size: 13.5px; color: var(--text-lt); line-height: 1.8; }
+  .faq-item a { color: var(--green); font-weight: 700; }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-<a class="nav-brand" href="#anasayfa">
-  <div class="nav-logo-wrapper">
-    <img src="images/HH_seffaf_logo.webp" alt="Hatay Hasadı Logo" class="nav-logo-img">
-  </div>
-  <div class="nav-brand-text">
-    <strong>Hatay Hasadı</strong>
-    <span>Topraktan Gelen Lezzet</span>
-  </div>
-</a>
-  <ul class="nav-links">
-    <li><a href="#urunler">Ürünler</a></li>
-    <li><a href="#hakkimizda">Hakkımızda</a></li>
-    <li><a href="#fiyatlar">Fiyatlar</a></li>
-    <li><a href="#toplu-siparis">Toplu Sipariş</a></li>
-    <li><a class="mobile-cta" href="https://wa.me/905441230776?text=Merhaba%2C%20sipariş%20vermek%20istiyorum." target="_blank">Sipariş Ver →</a></li>
-  </ul>
-  <a class="nav-cta" href="https://wa.me/905441230776?text=Merhaba%2C%20sipariş%20vermek%20istiyorum." target="_blank">Sipariş Ver →</a>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Menü">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="mobile-overlay" id="mobileOverlay"></div>
 
 <!-- HERO -->
 <section class="hero" id="anasayfa">
@@ -404,316 +321,12 @@
         </div>
       </div>
    </div>
-    <div class="product-grid">
+    <div class="product-grid" id="productGrid">
 
-       <!-- İSOT -->
-      <div class="product-card fade-in">
-            <div class="product-icon-wrap">
-  <img src="images/Isot.webp" alt="Isot" />
-</div>
-        <div class="product-body">
-          <span class="product-badge">Hatay'a Özgü</span>
-          <div class="product-name">İsot Biberi</div>
-          <div class="product-desc">Hatay'ın simge baharatı. Kendine özgü duman aroması ve orta ateşiyle.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">129 ₺</span><span class="new-price">109 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">299 ₺</span><span class="new-price">245 ₺</span><span class="disc-tag">%18</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=İsot%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- TOZ BİBER -->
-      <div class="product-card fade-in">
-                 <div class="product-icon-wrap"><img src="images/PulBiber.webp" alt="PulBiber" /></div>
-        <div class="product-body">
-          <span class="product-badge">En Çok Satan</span>
-          <div class="product-name">Kırmızı Pul Biber</div>
-          <div class="product-desc">Acı çeşidi. Güneydoğu'nun bereket yüklü kırmızısı, yoğun renk ve aroma.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">119 ₺</span><span class="new-price">99 ₺</span><span class="disc-tag">%18</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">259 ₺</span><span class="new-price">219 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Kırmızı%20Toz%20Biber%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SUMAK -->
-      <div class="product-card fade-in">
-        <div class="product-icon-wrap">
-  <img src="images/Sumak.webp" alt="Çekilmiş Sumak" />
-</div>
-        <div class="product-body">
-          <span class="product-badge">Restoran Seçimi</span>
-          <div class="product-name">Sumak (Çekilmiş)</div>
-          <div class="product-desc">1. kalite Hatay sumagı. Ekşi, aromatik, salatada ve mezede vazgeçilmez.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">209 ₺</span><span class="new-price">175 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">499 ₺</span><span class="new-price">425 ₺</span><span class="disc-tag">%15</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Sumak%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ZAHTER -->
-      <div class="product-card fade-in">
-         <div class="product-icon-wrap">
-  <img src="images/zahter.webp" alt="Zahter" />
-</div>
-        <div class="product-body">
-          <span class="product-badge">Hatay Aroması</span>
-          <div class="product-name">Zahter</div>
-          <div class="product-desc">Kurutulmuş kekik karışımı. Kahvaltıda zeytinyağıyla, etlerde, pidelerde.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">124 ₺</span><span class="new-price">105 ₺</span><span class="disc-tag">%15</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">310 ₺</span><span class="new-price">251 ₺</span><span class="disc-tag">%19</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Zahter%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- KaraBiber -->
-      <div class="product-card fade-in">
-         <div class="product-icon-wrap"><img src="images/Karabiber.webp" alt="Çekilmiş Karabiber" /></div>
-        <div class="product-body">
-          <span class="product-badge">Sağlık</span>
-          <div class="product-name">Karabiber(Çekilmiş)</div>
-          <div class="product-desc">Mutfağın vazgeçilmezi. Et, tavuk, çorba ve sosların derinliğini artıran güçlü baharat notu.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">199 ₺</span><span class="new-price">169 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">499 ₺</span><span class="new-price">415 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Karabiber%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ÇÖREK OTU -->
-      <div class="product-card fade-in">
-            <div class="product-icon-wrap">
-  <img src="images/CorekOtu.webp" alt="CorekOtu" />
-</div>
-        <div class="product-body">
-          <span class="product-badge">Sağlık</span>
-          <div class="product-name">Çörek Otu</div>
-          <div class="product-desc">Tam tane, saf ve katkısız. Ekmeklerde, peynirde, çaylarda kullanım.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">79 ₺</span><span class="new-price">65 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">139 ₺</span><span class="new-price">119 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Çörek%20Otu%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- KİMYON -->
-      <div class="product-card fade-in">
-        <div class="product-icon-wrap"><img src="images/KimyonNew.webp" alt="Çekilmiş Kimyon" /></div>
-        <div class="product-body">
-          <span class="product-badge">Temel Baharat</span>
-          <div class="product-name">Çekilmiş Kimyon</div>
-          <div class="product-desc">Her mutfakta tükenen, düzenli alım. Aromatik ve güçlü aroma profili.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">129 ₺</span><span class="new-price">109 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">289 ₺</span><span class="new-price">245 ₺</span><span class="disc-tag">%16</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Kimyon%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- KURU NANE -->
-      <div class="product-card fade-in">
-        <div class="product-icon-wrap"><img src="images/KuruNane.webp" alt="KuruNane" /></div>
-        <div class="product-body">
-          <span class="product-badge">Klasik</span>
-          <div class="product-name">Kuru Nane</div>
-          <div class="product-desc">Yemekte, çayda, ayranın içinde. Taze renk, güçlü aroma, zarif görüntü.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">79 ₺</span><span class="new-price">65 ₺</span><span class="disc-tag">%17</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">139 ₺</span><span class="new-price">119 ₺</span><span class="disc-tag">%15</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Kuru%20Nane%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-      <!-- Kişniş -->
-      <div class="product-card fade-in">
-<div class="product-icon-wrap"><img src="images/Kisnis.webp" alt="Çekilmiş Kisnis" /></div>
-        <div class="product-body">
-          <span class="product-badge">Klasik</span>
-          <div class="product-name">Kişniş</div>
-          <div class="product-desc">Limonumsu ve hafif baharatlı aromasıyla et yemeklerinde, çorbalarda ve turşularda vazgeçilmez.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">59 ₺</span><span class="new-price">49 ₺</span><span class="disc-tag">%17</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">109 ₺</span><span class="new-price">89 ₺</span><span class="disc-tag">%15</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Kişniş%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-       <!-- Rezene -->
-      <div class="product-card fade-in">
-        <div class="product-icon-wrap"><img src="images/Rezene.webp" alt="Rezene" /></div>
-        <div class="product-body">
-          <span class="product-badge">Klasik</span>
-          <div class="product-name">Rezene</div>
-          <div class="product-desc">Tatlı anason aromasıyla balık yemeklerinde, bitki çaylarında ve sindirim için geleneksel kullanım.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">79 ₺</span><span class="new-price">65 ₺</span><span class="disc-tag">%17</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">139 ₺</span><span class="new-price">119 ₺</span><span class="disc-tag">%15</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Rezene%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-       <!-- Biberiye -->
-      <div class="product-card fade-in">
-        <div class="product-icon-wrap"><img src="images/Biberiye.webp" alt="Biberiye" /></div>
-        <div class="product-body">
-          <span class="product-badge">Klasik</span>
-          <div class="product-name">Biberiye</div>
-          <div class="product-desc">Güçlü aromatik yapısıyla fırın etlerinde, tavukta, patates ve zeytinyağlı yemeklerde mükemmel.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">69 ₺</span><span class="new-price">59 ₺</span><span class="disc-tag">%17</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">119 ₺</span><span class="new-price">105 ₺</span><span class="disc-tag">%15</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Biberiye%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-       <!-- Karanfil -->
-      <div class="product-card fade-in">
-        <div class="product-icon-wrap"><img src="images/Karanfil.webp" alt="Karanfil" /></div>
-        <div class="product-body">
-          <span class="product-badge">Klasik</span>
-          <div class="product-name">Karanfil</div>
-          <div class="product-desc">Yoğun ve sıcak aromasıyla et sularında, pilavlarda, tatlılarda ve kış çaylarında derinlik katar.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">119 ₺</span><span class="new-price">95 ₺</span><span class="disc-tag">%17</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">239 ₺</span><span class="new-price">199 ₺</span><span class="disc-tag">%15</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Karanfil%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
-
-       <!-- Sarımsak Tozu -->
-      <div class="product-card fade-in">
-        <div class="product-icon-wrap"><img src="images/Sarımsak.webp" alt="Sarımsak Tozu" /></div>
-        <div class="product-body">
-          <span class="product-badge">Klasik</span>
-          <div class="product-name">Sarımsak Tozu</div>
-          <div class="product-desc">Pratik kullanımıyla marinelerde, soslarda, köftelerde ve çorbalarda doğal sarımsak lezzeti.</div>
-          <div class="product-sizes">
-            <div class="size-row">
-              <span class="size-label">100 gr</span>
-              <div class="size-prices"><span class="old-price">79 ₺</span><span class="new-price">65 ₺</span><span class="disc-tag">%17</span></div>
-            </div>
-            <div class="size-row">
-              <span class="size-label">250 gr</span>
-              <div class="size-prices"><span class="old-price">289 ₺</span><span class="new-price">245 ₺</span><span class="disc-tag">%15</span></div>
-            </div>
-          </div>
-          <div class="order-row">
-            <a class="product-order-btn" href="https://wa.me/905441230776?text=Sarımsak%20Tozu%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver</a>
-          </div>
-        </div>
-      </div>
+      <!-- Baharat kartları js/products.js verisinden otomatik oluşturulur -->
 
       <!-- YAKINDA -->
-      <div class="product-card fade-in" style="border: 2px dashed rgba(92,122,46,0.3); background: rgba(92,122,46,0.03);">
+      <div class="product-card fade-in" id="yakindaCard" style="border: 2px dashed rgba(92,122,46,0.3); background: rgba(92,122,46,0.03);">
          <div class="product-icon-wrap"><img src="images/daha_fazla.webp" alt="daha_fazla" /></div>
         <div class="product-body">
           <span class="product-badge" style="background: rgba(196,150,58,0.15); color: var(--gold);">Çok Yakında</span>
@@ -757,7 +370,10 @@
           <div class="oo-price">2.500 ₺</div>
           <div class="oo-price-sub">5 litre teneke · tek fiyat</div>
         </div>
-        <a class="oo-cta" href="https://wa.me/905441230776?text=Naturel%20Sızma%20Zeytinyağı%20(5L)%20sipariş%20etmek%20istiyorum." target="_blank">Sipariş Ver →</a>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="oo-cta" onclick="HHCart.add('zeytinyagi', 0, 1)" style="border:none;cursor:pointer;font-family:inherit;">🧺 Sepete Ekle</button>
+          <a class="oo-cta oo-cta-ghost" href="urun.html?id=zeytinyagi">İncele →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -843,72 +459,8 @@
           <th>250 Gram</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td><span class="prd-name">İsot Biberi</span><span class="prd-badge">Hatay'a Özgü</span></td>
-          <td class="pc"><span class="o">129 ₺</span><span class="n">109 ₺</span><span class="d">%16</span></td>
-          <td class="pc"><span class="o">299 ₺</span><span class="n">245 ₺</span><span class="d">%18</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Çekilmiş Sumak</span><span class="prd-badge">1. Kalite</span></td>
-          <td class="pc"><span class="o">209 ₺</span><span class="n">175 ₺</span><span class="d">%16</span></td>
-          <td class="pc"><span class="o">499 ₺</span><span class="n">425 ₺</span><span class="d">%15</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Zahter</span><span class="prd-badge">Hatay Aroması</span></td>
-          <td class="pc"><span class="o">124 ₺</span><span class="n">105 ₺</span><span class="d">%15</span></td>
-          <td class="pc"><span class="o">310 ₺</span><span class="n">251 ₺</span><span class="d">%19</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Kırmızı Pul Biber</span></td>
-          <td class="pc"><span class="o">119 ₺</span><span class="n">99 ₺</span><span class="d">%18</span></td>
-          <td class="pc"><span class="o">259 ₺</span><span class="n">219 ₺</span><span class="d">%16</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Karabiber (Çekilmiş)</span></td>
-          <td class="pc"><span class="o">199 ₺</span><span class="n">169 ₺</span><span class="d">%16</span></td>
-          <td class="pc"><span class="o">499 ₺</span><span class="n">415 ₺</span><span class="d">%16</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Çörek Otu</span></td>
-          <td class="pc"><span class="o">79 ₺</span><span class="n">65 ₺</span><span class="d">%16</span></td>
-          <td class="pc"><span class="o">139 ₺</span><span class="n">119 ₺</span><span class="d">%16</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Kimyon</span></td>
-          <td class="pc"><span class="o">129 ₺</span><span class="n">109 ₺</span><span class="d">%16</span></td>
-          <td class="pc"><span class="o">289 ₺</span><span class="n">245 ₺</span><span class="d">%16</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Kuru Nane</span></td>
-          <td class="pc"><span class="o">79 ₺</span><span class="n">65 ₺</span><span class="d">%17</span></td>
-          <td class="pc"><span class="o">139 ₺</span><span class="n">119 ₺</span><span class="d">%15</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Kişniş</span></td>
-          <td class="pc"><span class="o">59 ₺</span><span class="n">49 ₺</span><span class="d">%17</span></td>
-          <td class="pc"><span class="o">109 ₺</span><span class="n">89 ₺</span><span class="d">%15</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Rezene</span></td>
-          <td class="pc"><span class="o">79 ₺</span><span class="n">65 ₺</span><span class="d">%17</span></td>
-          <td class="pc"><span class="o">139 ₺</span><span class="n">119 ₺</span><span class="d">%15</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Biberiye</span></td>
-          <td class="pc"><span class="o">69 ₺</span><span class="n">59 ₺</span><span class="d">%17</span></td>
-          <td class="pc"><span class="o">119 ₺</span><span class="n">105 ₺</span><span class="d">%15</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Karanfil</span></td>
-          <td class="pc"><span class="o">119 ₺</span><span class="n">95 ₺</span><span class="d">%17</span></td>
-          <td class="pc"><span class="o">239 ₺</span><span class="n">199 ₺</span><span class="d">%15</span></td>
-        </tr>
-        <tr>
-          <td><span class="prd-name">Sarımsak Tozu</span></td>
-          <td class="pc"><span class="o">79 ₺</span><span class="n">65 ₺</span><span class="d">%17</span></td>
-          <td class="pc"><span class="o">289 ₺</span><span class="n">245 ₺</span><span class="d">%15</span></td>
-        </tr>
+      <tbody id="pricingBody">
+        <!-- Satırlar js/products.js verisinden otomatik oluşturulur -->
       </tbody>
     </table>
     </div>
@@ -946,6 +498,46 @@
   </div>
 </section>
 
+<!-- SSS -->
+<section id="sss">
+  <div class="container">
+    <div style="text-align:center;">
+      <p class="section-label">Merak Edilenler</p>
+      <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+    </div>
+    <div class="faq-list fade-in">
+      <details class="faq-item">
+        <summary>Siparişim ne kadar sürede elime ulaşır?</summary>
+        <p>Siparişiniz 1-2 iş günü içinde kargoya verilir ve kargo takip numaranız WhatsApp üzerinden paylaşılır. Kargo firmasının teslim süresi bölgenize göre 1-3 iş günüdür.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kargo ücreti ne kadar?</summary>
+        <p>1.500 ₺ ve üzeri siparişlerde kargo tamamen ücretsizdir. Bu tutarın altındaki siparişlerde kargo firmasının güncel tarifesi uygulanır.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Ödemeyi nasıl yapabilirim?</summary>
+        <p>Şu an ödemeler havale/EFT (IBAN) ile alınmaktadır; sipariş sonrası IBAN bilgimiz WhatsApp'tan iletilir. Kredi kartıyla online ödeme çok yakında eklenecektir.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Ürünleriniz gerçekten katkısız mı?</summary>
+        <p>Evet. Ürünlerimizde boyar madde, koruyucu veya dolgu maddesi bulunmaz. Baharatlarımız doğrudan Hatay'daki güvendiğimiz üreticilerden temin edilir ve kendi markamızla paketlenir.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Baharatları nasıl saklamalıyım?</summary>
+        <p>Serin, kuru ve güneş almayan bir yerde, ağzı kapalı kapta saklamanızı öneririz. Bu koşullarda ürünlerimiz 12 ay boyunca tazeliğini korur. Kraft doypack ambalajımız kilitli yapısıyla saklamaya uygundur.</p>
+      </details>
+      <details class="faq-item">
+        <summary>İade veya değişim yapabilir miyim?</summary>
+        <p>Ambalajı açılmamış ürünlerinizi teslimattan itibaren 14 gün içinde iade edebilirsiniz. Gıda güvenliği gereği ambalajı açılmış ürünlerde iade kabul edilememektedir. Hasarlı ulaşan paketler için fotoğrafla birlikte bize WhatsApp'tan ulaşmanız yeterlidir.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Restoranım için toplu alım yapabilir miyim?</summary>
+        <p>Elbette! 500 gr, 1 kg ve üzeri paketleme seçenekleri ve özel B2B fiyatlarımız mevcut. Detaylar için <a href="#toplu-siparis">Toplu Sipariş</a> bölümüne göz atın.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- B2B -->
 <section id="toplu-siparis">
   <div class="container">
@@ -975,24 +567,99 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand"><h3>Hatay Hasadı</h3><p>Topraktan gelen lezzeti, Hatay'dan sofralarınıza taşıyoruz. Katkısız, standart kalite, güvenilir tedarik.</p></div>
-    <div class="footer-col"><h4>Ürünler</h4><a href="#urunler">İsot Biberi</a><a href="#urunler">Sumak</a><a href="#urunler">Zahter</a><a href="#urunler">Tüm Ürünler</a></div>
-    <div class="footer-col"><h4>Bilgi</h4><a href="#hakkimizda">Hakkımızda</a><a href="#nasil-siparis">Nasıl Sipariş?</a><a href="#toplu-siparis">Toplu Sipariş</a></div>
-    <div class="footer-col"><h4>İletişim</h4><a href="https://wa.me/905441230776" target="_blank">WhatsApp</a><a href="https://instagram.com/hatayhasadi" target="_blank">Instagram</a><a href="/cdn-cgi/l/email-protection#fb92959d94bb939a8f9a82939a889a9f92d5989496">E-posta</a></div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Hatay Hasadı. Tüm hakları saklıdır.</span>
-    <span>Dürüst, Özenli, Adil Anlayış 🌿 Hatay Sevgisiyle</span>
-  </div>
-</footer>
-
 <!-- SCROLL TO TOP -->
 <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Yukarı çık">↑</button>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script src="js/products.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/vendor/supabase.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script>
+// Ürün kartları ve fiyat tablosu merkezi veriden oluşturulur (js/products.js)
+(function () {
+  const spices = PRODUCTS.filter(p => !p.featured);
+
+  /* Ürün kartları */
+  const cardsHtml = spices.map(p => {
+    const rows = p.sizes.map((s, si) => `
+            <div class="size-row selectable${si === 0 ? ' sel' : ''}" data-size="${si}" role="radio" aria-checked="${si === 0}">
+              <span class="size-label">${s.label}</span>
+              <div class="size-prices">${s.old ? `<span class="old-price">${formatTL(s.old)}</span>` : ''}<span class="new-price">${formatTL(s.price)}</span>${s.old ? `<span class="disc-tag">%${discountPct(s.old, s.price)}</span>` : ''}</div>
+            </div>`).join('');
+    return `
+      <div class="product-card fade-in">
+        <a class="product-icon-wrap" href="urun.html?id=${p.id}"><img src="${p.images[0]}" alt="${p.name}" loading="lazy"></a>
+        <div class="product-body">
+          <span class="product-badge">${p.badge}</span>
+          <div class="product-name"><a href="urun.html?id=${p.id}">${p.name}</a></div>
+          <div class="product-desc">${p.short}</div>
+          <div class="product-sizes">${rows}
+          </div>
+          <div class="order-row">
+            <a class="btn-detail" href="urun.html?id=${p.id}">İncele</a>
+            <button class="product-order-btn" data-add="${p.id}">Sepete Ekle</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+  const grid = document.getElementById('productGrid');
+  const yakinda = document.getElementById('yakindaCard');
+  if (yakinda) yakinda.insertAdjacentHTML('beforebegin', cardsHtml);
+  else grid.innerHTML = cardsHtml;
+
+  // Boyut seçimi ve sepete ekleme (event delegation)
+  grid.addEventListener('click', (e) => {
+    const row = e.target.closest('.size-row.selectable');
+    if (row) {
+      const card = row.closest('.product-card');
+      card.querySelectorAll('.size-row').forEach(r => { r.classList.remove('sel'); r.setAttribute('aria-checked', 'false'); });
+      row.classList.add('sel');
+      row.setAttribute('aria-checked', 'true');
+      card.dataset.size = row.dataset.size;
+      return;
+    }
+    const btn = e.target.closest('[data-add]');
+    if (btn) {
+      const card = btn.closest('.product-card');
+      HHCart.add(btn.dataset.add, parseInt(card.dataset.size || '0', 10), 1);
+    }
+  });
+
+  /* Fiyat tablosu */
+  const badgeIds = ['isot', 'sumak', 'zahter'];
+  document.getElementById('pricingBody').innerHTML = spices.map(p => {
+    const cells = p.sizes.map(s =>
+      `<td class="pc">${s.old ? `<span class="o">${formatTL(s.old)}</span>` : ''}<span class="n">${formatTL(s.price)}</span>${s.old ? `<span class="d">%${discountPct(s.old, s.price)}</span>` : ''}</td>`).join('');
+    const badge = badgeIds.includes(p.id) ? `<span class="prd-badge">${p.badge}</span>` : '';
+    return `<tr><td><a class="prd-name-link" href="urun.html?id=${p.id}"><span class="prd-name">${p.name}</span></a>${badge}</td>${cells}</tr>`;
+  }).join('');
+})();
+
+// Gerçek müşteri yorumları: Supabase hazır olduğunda statik örneklerin yerini alır
+document.addEventListener('hh-auth-ready', async () => {
+  try {
+    const top = await HHAuth.getTopReviews(3);
+    if (!top.length) return; // henüz gerçek yorum yoksa örnekler kalır
+    const starStr = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+    const esc = s => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+    const grid = document.querySelector('.testimonial-grid');
+    if (!grid) return;
+    grid.innerHTML = top.map(r => {
+      const p = getProduct(r.product_id);
+      const initials = r.display_name.split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 2);
+      return `
+      <div class="testimonial-card fade-in visible">
+        <div class="testimonial-stars">${starStr(r.rating)}</div>
+        <div class="testimonial-text">"${esc(r.comment)}"</div>
+        <div class="testimonial-author"><div class="testimonial-avatar">${initials}</div><div><div class="testimonial-name">${esc(r.display_name)}</div><div class="testimonial-role">${p ? p.name : 'Hatay Hasadı'} aldı · Doğrulanmış müşteri</div></div></div>
+      </div>`;
+    }).join('');
+  } catch (e) { /* sessizce statik örneklerle devam */ }
+});
+</script>
+<script>
 // Scroll to top button
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 window.addEventListener('scroll', () => {
@@ -1004,28 +671,6 @@ window.addEventListener('scroll', () => {
 });
 scrollTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Hamburger menu
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const navLinks = document.querySelector('.nav-links');
-const mobileOverlay = document.getElementById('mobileOverlay');
-
-function toggleMenu() {
-  hamburgerBtn.classList.toggle('active');
-  navLinks.classList.toggle('active');
-  mobileOverlay.classList.toggle('active');
-  document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-}
-
-hamburgerBtn.addEventListener('click', toggleMenu);
-mobileOverlay.addEventListener('click', toggleMenu);
-
-// Close menu when a link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (navLinks.classList.contains('active')) toggleMenu();
-  });
 });
 
 const observer = new IntersectionObserver((entries) => {
