@@ -20,13 +20,48 @@
   @media (max-width: 860px) { .product-wrap { grid-template-columns: 1fr; gap: 2rem; } }
 
   /* GALLERY */
-  .gallery-main { border-radius: 20px; overflow: hidden; border: 1px solid rgba(92,122,46,0.15); background: var(--white); box-shadow: 0 12px 32px rgba(61,43,31,0.08); }
-  .gallery-main img { display: block; width: 100%; height: 440px; object-fit: cover; }
+  .gallery-main { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(92,122,46,0.15); background: var(--white); box-shadow: 0 12px 32px rgba(61,43,31,0.08); aspect-ratio: 1 / 1; cursor: zoom-in; touch-action: pan-y; }
+  .gallery-main img { display: block; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.22s ease; }
+  .gallery-main img.fading { opacity: 0; }
+  .g-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: none; background: rgba(247,242,232,0.92); color: var(--brown); font-size: 19px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.18); opacity: 0; transition: opacity 0.2s; z-index: 2; }
+  .gallery-main:hover .g-arrow { opacity: 1; }
+  @media (hover: none) { .g-arrow { opacity: 0.9; } }
+  .g-prev { left: 0.75rem; }
+  .g-next { right: 0.75rem; }
+  .g-dots { position: absolute; bottom: 0.85rem; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
+  .g-dots span { width: 8px; height: 8px; border-radius: 4px; background: rgba(247,242,232,0.75); border: 1px solid rgba(61,43,31,0.2); transition: all 0.25s; }
+  .g-dots span.on { background: var(--green); width: 22px; }
   .gallery-thumbs { display: flex; gap: 0.75rem; margin-top: 0.9rem; flex-wrap: wrap; }
-  .gallery-thumbs button { width: 76px; height: 76px; border-radius: 12px; overflow: hidden; border: 2px solid transparent; padding: 0; cursor: pointer; background: var(--white); transition: border-color 0.2s; }
+  .gallery-thumbs button { width: 84px; height: 84px; border-radius: 12px; overflow: hidden; border: 2px solid transparent; padding: 0; cursor: pointer; background: var(--white); transition: border-color 0.2s; }
   .gallery-thumbs button.active { border-color: var(--green); }
   .gallery-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .gallery-hint { font-size: 12px; color: var(--text-lt); margin-top: 0.75rem; }
+
+  /* LIGHTBOX */
+  .lightbox { position: fixed; inset: 0; background: rgba(24,17,11,0.93); z-index: 500; display: none; align-items: center; justify-content: center; touch-action: pan-y; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 94vw; max-height: 84vh; object-fit: contain; border-radius: 10px; }
+  .lb-close { position: absolute; top: 1rem; right: 1rem; width: 46px; height: 46px; border-radius: 50%; border: none; background: rgba(247,242,232,0.15); color: #fff; font-size: 26px; cursor: pointer; z-index: 2; }
+  .lb-close:hover { background: rgba(247,242,232,0.3); }
+  .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: none; background: rgba(247,242,232,0.15); color: #fff; font-size: 22px; cursor: pointer; z-index: 2; }
+  .lb-arrow:hover { background: rgba(247,242,232,0.3); }
+  .lb-prev { left: 1rem; }
+  .lb-next { right: 1rem; }
+  .lb-count { position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); color: rgba(247,242,232,0.8); font-size: 13px; letter-spacing: 1px; }
+
+  /* MOBİL SATIN ALMA ÇUBUĞU */
+  .mobile-buybar { display: none; }
+  @media (max-width: 860px) {
+    .mobile-buybar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; gap: 0.9rem; background: rgba(247,242,232,0.97); backdrop-filter: blur(8px); border-top: 1px solid rgba(92,122,46,0.25); padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom)); }
+    .mb-info { flex: 1; min-width: 0; line-height: 1.25; }
+    .mb-size { display: block; font-size: 11.5px; color: var(--text-lt); font-weight: 700; }
+    .mb-price { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--green-dk); }
+    .mb-add { background: var(--green); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 26px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; }
+    body { padding-bottom: 74px; }
+    .tabs-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+    .tab-btn { white-space: nowrap; }
+  }
 
   /* INFO */
   .p-badge { display: inline-block; margin-bottom: 0.75rem; background: rgba(92,122,46,0.12); color: var(--green); padding: 3px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
@@ -135,7 +170,12 @@
 <!-- PRODUCT -->
 <div class="product-wrap" id="productWrap">
   <div>
-    <div class="gallery-main"><img id="galleryMain" src="" alt=""></div>
+    <div class="gallery-main" id="galleryMain0">
+      <img id="galleryMain" src="" alt="">
+      <button class="g-arrow g-prev" id="gPrev" aria-label="Önceki fotoğraf">‹</button>
+      <button class="g-arrow g-next" id="gNext" aria-label="Sonraki fotoğraf">›</button>
+      <div class="g-dots" id="gDots"></div>
+    </div>
     <div class="gallery-thumbs" id="galleryThumbs"></div>
     <p class="gallery-hint" id="galleryHint" style="display:none;">Fotoğrafa tıklayarak diğer görselleri inceleyebilirsiniz.</p>
   </div>
@@ -205,6 +245,24 @@
   <div class="related-grid" id="relatedGrid"></div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Kapat">×</button>
+  <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Önceki">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-arrow lb-next" id="lbNext" aria-label="Sonraki">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<!-- MOBİL SATIN ALMA ÇUBUĞU -->
+<div class="mobile-buybar" id="mobileBuyBar">
+  <div class="mb-info">
+    <span class="mb-size" id="mbSize"></span>
+    <span class="mb-price" id="mbPrice"></span>
+  </div>
+  <button class="mb-add" id="mbAdd">🧺 Sepete Ekle</button>
+</div>
+
 <script src="js/products.js"></script>
 <script src="js/layout.js"></script>
 <script src="js/vendor/supabase.js"></script>
@@ -269,25 +327,93 @@
   document.getElementById('pShort').textContent = product.short;
   document.getElementById('pDesc').textContent = product.description;
 
-  /* Galeri */
+  /* Galeri: oklar, noktalar, kaydırma, lightbox */
+  const imgs = product.images;
+  let imgIdx = 0;
+  const mainWrap = document.getElementById('galleryMain0');
   const mainImg = document.getElementById('galleryMain');
-  mainImg.src = product.images[0];
-  mainImg.alt = product.name;
   const thumbs = document.getElementById('galleryThumbs');
-  if (product.images.length > 1) {
+  const dots = document.getElementById('gDots');
+  const multi = imgs.length > 1;
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCount = document.getElementById('lbCount');
+
+  mainImg.alt = product.name;
+  if (!multi) {
+    document.getElementById('gPrev').style.display = 'none';
+    document.getElementById('gNext').style.display = 'none';
+  } else {
     document.getElementById('galleryHint').style.display = 'block';
-    product.images.forEach((src, idx) => {
+    imgs.forEach((s, idx) => {
       const b = document.createElement('button');
-      b.className = idx === 0 ? 'active' : '';
-      b.innerHTML = `<img src="${src}" alt="${product.name} görsel ${idx + 1}">`;
-      b.addEventListener('click', () => {
-        mainImg.src = src;
-        thumbs.querySelectorAll('button').forEach(x => x.classList.remove('active'));
-        b.classList.add('active');
-      });
+      b.innerHTML = `<img src="${s}" alt="${product.name} görsel ${idx + 1}" loading="lazy">`;
+      b.addEventListener('click', () => setImage(idx));
       thumbs.appendChild(b);
+      const d = document.createElement('span');
+      dots.appendChild(d);
     });
   }
+
+  function setImage(i) {
+    imgIdx = (i + imgs.length) % imgs.length;
+    mainImg.classList.add('fading');
+    setTimeout(() => {
+      mainImg.src = imgs[imgIdx];
+      mainImg.classList.remove('fading');
+    }, 120);
+    thumbs.querySelectorAll('button').forEach((x, k) => x.classList.toggle('active', k === imgIdx));
+    dots.querySelectorAll('span').forEach((x, k) => x.classList.toggle('on', k === imgIdx));
+    if (lightbox.classList.contains('open')) {
+      lbImg.src = imgs[imgIdx];
+      lbCount.textContent = (imgIdx + 1) + ' / ' + imgs.length;
+    }
+  }
+  mainImg.src = imgs[0];
+  if (multi) setImage(0);
+
+  document.getElementById('gPrev').addEventListener('click', (e) => { e.stopPropagation(); setImage(imgIdx - 1); });
+  document.getElementById('gNext').addEventListener('click', (e) => { e.stopPropagation(); setImage(imgIdx + 1); });
+
+  /* Dokunmatik kaydırma */
+  function addSwipe(el) {
+    let x0 = null;
+    el.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40 && multi) setImage(imgIdx + (dx < 0 ? 1 : -1));
+      x0 = null;
+    }, { passive: true });
+  }
+  addSwipe(mainWrap);
+
+  /* Lightbox */
+  function openLightbox() {
+    lbImg.src = imgs[imgIdx];
+    lbImg.alt = product.name;
+    lbCount.textContent = multi ? (imgIdx + 1) + ' / ' + imgs.length : '';
+    document.getElementById('lbPrev').style.display = multi ? '' : 'none';
+    document.getElementById('lbNext').style.display = multi ? '' : 'none';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  mainWrap.addEventListener('click', openLightbox);
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.getElementById('lbPrev').addEventListener('click', () => setImage(imgIdx - 1));
+  document.getElementById('lbNext').addEventListener('click', () => setImage(imgIdx + 1));
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') setImage(imgIdx - 1);
+    if (e.key === 'ArrowRight') setImage(imgIdx + 1);
+  });
+  addSwipe(lightbox);
 
   /* Boyut seçimi */
   let sizeIdx = 0;
@@ -316,13 +442,18 @@
     HHCart.add(product.id, sizeIdx, qty);
   });
 
-  /* WhatsApp direkt sipariş */
+  /* WhatsApp direkt sipariş + mobil çubuk */
   function updateWa() {
     const s = product.sizes[sizeIdx];
     const msg = `Merhaba, ${product.name} (${s.label}) sipariş etmek istiyorum.`;
     document.getElementById('waDirect').href = `https://wa.me/905441230776?text=${encodeURIComponent(msg)}`;
+    document.getElementById('mbSize').textContent = product.name + ' · ' + s.label;
+    document.getElementById('mbPrice').textContent = formatTL(s.price);
   }
   updateWa();
+  document.getElementById('mbAdd').addEventListener('click', () => {
+    HHCart.add(product.id, sizeIdx, qty);
+  });
 
   /* Faydalar */
   const ben = document.getElementById('pBenefits');

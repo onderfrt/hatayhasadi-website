@@ -236,6 +236,40 @@
   .size-row.selectable .size-label::before { content: ''; display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid rgba(92,122,46,0.4); margin-right: 7px; vertical-align: -1px; transition: all 0.15s; }
   .size-row.selectable.sel .size-label::before { border-color: var(--green); background: var(--green); box-shadow: inset 0 0 0 2.5px var(--cream); }
 
+  /* Kart görselleri: yumuşak zoom + ikinci fotoğrafa hover geçişi */
+  .product-icon-wrap { position: relative; }
+  .product-icon-wrap img { transition: transform 0.5s ease, opacity 0.35s ease; }
+  .product-card:hover .product-icon-wrap img { transform: scale(1.05); }
+  .product-icon-wrap .pi-b { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+  .product-card:hover .product-icon-wrap .pi-b { opacity: 1; }
+
+  /* MOBİL: 2 sütunlu kompakt katalog */
+  @media (max-width: 640px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .product-icon-wrap { height: 155px; }
+    .product-body { padding: 0.75rem 0.8rem 0.85rem; }
+    .product-badge { font-size: 9px; padding: 2px 8px; margin-bottom: 0.4rem; letter-spacing: 0.5px; }
+    .product-name { font-size: 1.02rem; margin-bottom: 0.5rem; }
+    .product-desc { display: none; }
+    .size-row.selectable { padding: 3px 6px; margin: 0 -6px; }
+    .size-label { font-size: 11px; min-width: 34px; }
+    .size-label::before { width: 10px; height: 10px; margin-right: 5px; }
+    .new-price { font-size: 13.5px; }
+    .old-price { font-size: 10.5px; }
+    .disc-tag { display: none; }
+    .order-row { flex-direction: column; align-items: stretch; gap: 6px; padding-top: 8px; }
+    .btn-detail { text-align: center; padding: 0.45rem; }
+    .product-order-btn { width: 100%; padding: 0.55rem; }
+    .hero { min-height: auto; padding: 3rem 1.25rem 3.5rem; }
+    .hero-stats { gap: 1.25rem; margin-top: 2.25rem; padding-top: 1.75rem; }
+    .hero-stat strong { font-size: 1.4rem; }
+    .hero-stat span { font-size: 10px; letter-spacing: 1px; }
+    .hero-buttons .btn-primary, .hero-buttons .btn-secondary { width: 100%; justify-content: center; }
+    .section-title { font-size: 1.6rem; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+  }
+
   /* SSS */
   #sss { background: var(--white); }
   .faq-list { max-width: 760px; margin: 2.5rem auto 0; }
@@ -588,9 +622,12 @@
               <span class="size-label">${s.label}</span>
               <div class="size-prices">${s.old ? `<span class="old-price">${formatTL(s.old)}</span>` : ''}<span class="new-price">${formatTL(s.price)}</span>${s.old ? `<span class="disc-tag">%${discountPct(s.old, s.price)}</span>` : ''}</div>
             </div>`).join('');
+    const imgHtml = p.images[1]
+      ? `<img class="pi-a" src="${p.images[0]}" alt="${p.name}" loading="lazy"><img class="pi-b" src="${p.images[1]}" alt="${p.name} alternatif görsel" loading="lazy">`
+      : `<img src="${p.images[0]}" alt="${p.name}" loading="lazy">`;
     return `
       <div class="product-card fade-in">
-        <a class="product-icon-wrap" href="urun.html?id=${p.id}"><img src="${p.images[0]}" alt="${p.name}" loading="lazy"></a>
+        <a class="product-icon-wrap" href="urun.html?id=${p.id}">${imgHtml}</a>
         <div class="product-body">
           <span class="product-badge">${p.badge}</span>
           <div class="product-name"><a href="urun.html?id=${p.id}">${p.name}</a></div>

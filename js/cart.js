@@ -1,3 +1,4 @@
+// @ts-check
 /* ============================================================
    HATAY HASADI – SEPET SİSTEMİ
    localStorage tabanlı sepet. Kendi panel arayüzünü sayfaya
@@ -249,7 +250,8 @@ const HHCart = (() => {
             </div>
           </div>`;
       }).join('');
-      wrap.querySelectorAll('button[data-act]').forEach(b => {
+      wrap.querySelectorAll('button[data-act]').forEach((btn) => {
+        const b = /** @type {HTMLButtonElement} */ (btn);
         b.addEventListener('click', () => {
           const { act, id } = b.dataset;
           const size = parseInt(b.dataset.size, 10);

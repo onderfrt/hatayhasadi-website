@@ -1,3 +1,4 @@
+// @ts-check
 /* ============================================================
    HATAY HASADI – ÜYELİK SİSTEMİ (Supabase Auth)
    - Kayıt / giriş / çıkış
@@ -15,7 +16,7 @@ const HHAuth = (() => {
 
   function isConfigured() {
     return typeof SUPABASE_URL !== 'undefined'
-      && typeof window.supabase !== 'undefined'
+      && typeof window['supabase'] !== 'undefined'
       && !SUPABASE_URL.includes('PROJE-ADINIZ')
       && !SUPABASE_ANON_KEY.includes('BURAYA');
   }
@@ -231,7 +232,7 @@ const HHAuth = (() => {
     const baseUrl = SUPABASE_URL
       .replace(/\/(rest|auth|storage|realtime|functions)\/v\d+\/?$/i, '')
       .replace(/\/+$/, '');
-    client = window.supabase.createClient(baseUrl, SUPABASE_ANON_KEY);
+    client = window['supabase'].createClient(baseUrl, SUPABASE_ANON_KEY);
     injectNavLink();
     const { data: { session } } = await client.auth.getSession();
     updateNavLink(session);

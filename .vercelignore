@@ -1,0 +1,6 @@
+# Siteye servis edilmesi gerekmeyen dosyalar
+tests
+supabase
+.github
+*.md
+jsconfig.json

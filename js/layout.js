@@ -1,3 +1,4 @@
+// @ts-check
 /* ============================================================
    HATAY HASADI – ORTAK YERLEŞİM (nav + footer + mobil menü)
    Tüm sayfalara aynı navigasyonu ve footer'ı enjekte eder.
@@ -75,7 +76,8 @@ const HHLayout = (() => {
     hamburgerBtn.addEventListener('click', toggleMenu);
     mobileOverlay.addEventListener('click', toggleMenu);
     navLinks.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A' && navLinks.classList.contains('active')) toggleMenu();
+      const t = /** @type {HTMLElement} */ (e.target);
+      if (t.tagName === 'A' && navLinks.classList.contains('active')) toggleMenu();
     });
   }
 

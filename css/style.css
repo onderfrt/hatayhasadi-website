@@ -50,7 +50,12 @@ nav.hh-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 100; display:
 .mobile-overlay.active { display: block; opacity: 1; }
 
 @media (max-width: 900px) {
-  nav.hh-nav { padding: 0.75rem 1.25rem; }
+  nav.hh-nav { padding: 0.6rem 1rem; }
+  .nav-logo-img { height: 52px; }
+  .nav-brand-text strong { font-size: 19px; }
+  .nav-brand-text span { font-size: 9px; letter-spacing: 1.4px; }
+  /* iOS'ta odaklanınca otomatik yakınlaşmayı önler (16px altı tetikler) */
+  input, select, textarea { font-size: 16px !important; }
   .nav-links { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--cream); flex-direction: column; align-items: flex-start; padding: 5rem 2rem 2rem; gap: 0; z-index: 150; box-shadow: -4px 0 24px rgba(0,0,0,0.15); transition: right 0.35s ease; display: flex; }
   .nav-links.active { right: 0; }
   .nav-links li { width: 100%; border-bottom: 1px solid rgba(92,122,46,0.12); }

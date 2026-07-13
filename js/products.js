@@ -1,3 +1,4 @@
+// @ts-check
 /* ============================================================
    HATAY HASADI – MERKEZİ ÜRÜN VERİSİ
    Yeni ürün eklemek veya fiyat güncellemek için sadece bu
@@ -8,6 +9,32 @@
    dosyayı images/ klasörüne koyup yolunu diziye ekleyin.
    ============================================================ */
 
+/**
+ * @typedef {Object} ProductSize
+ * @property {string} label   Boyut etiketi ('100 gr', '250 gr', '5 L Teneke')
+ * @property {number|null} old  Kampanya öncesi fiyat (yoksa null)
+ * @property {number} price   Güncel satış fiyatı (₺)
+ */
+/**
+ * @typedef {Object} Recipe
+ * @property {string} title
+ * @property {string} text
+ */
+/**
+ * @typedef {Object} Product
+ * @property {string} id          URL ve sepette kullanılan benzersiz kimlik
+ * @property {string} name
+ * @property {string} badge
+ * @property {string[]} images    İlk görsel ana görseldir
+ * @property {string} short       Kart ve özet açıklaması
+ * @property {string} description Detay sayfası uzun açıklaması
+ * @property {string[]} benefits
+ * @property {Recipe[]} recipes
+ * @property {ProductSize[]} sizes
+ * @property {boolean} [featured] Vitrin ürünü (gridde ve tabloda gösterilmez)
+ */
+
+/** @type {Product[]} */
 const PRODUCTS = [
   {
     id: "isot",
@@ -189,7 +216,7 @@ const PRODUCTS = [
     id: "kisnis",
     name: "Kişniş",
     badge: "Klasik",
-    images: ["images/Kisnis.webp"],
+    images: ["images/Kisnis.webp", "images/Kisnis-2.webp"],
     short: "Limonumsu ve hafif baharatlı aromasıyla et yemeklerinde, çorbalarda ve turşularda.",
     description: "Kişniş tohumlarının öğütülmesiyle hazırlanır. Limonumsu, hafif tatlı aroması ile et yemeklerine, çorbalara ve turşulara incelikli bir tat katar. Dünya mutfaklarında köri karışımlarının da temel bileşenidir.",
     benefits: [
@@ -320,6 +347,9 @@ const PRODUCTS = [
 ];
 
 /* Yardımcılar */
+/** @param {string} id @returns {Product | undefined} */
 function getProduct(id) { return PRODUCTS.find(p => p.id === id); }
+/** @param {number} n @returns {string} */
 function formatTL(n) { return n.toLocaleString('tr-TR') + ' ₺'; }
+/** @param {number} oldP @param {number} newP @returns {number} */
 function discountPct(oldP, newP) { return Math.round((1 - newP / oldP) * 100); }

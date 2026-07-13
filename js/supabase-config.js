@@ -1,3 +1,4 @@
+// @ts-check
 /* ============================================================
    SUPABASE BAĞLANTI AYARLARI
    Değerleri Supabase Dashboard > Project Settings > API

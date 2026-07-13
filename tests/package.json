@@ -1,0 +1,14 @@
+{
+  "name": "hatayhasadi-tests",
+  "private": true,
+  "type": "module",
+  "description": "Hatay Hasadı e2e test paketi. Çalıştırma: npm install && npm test",
+  "scripts": {
+    "test": "node e2e.mjs",
+    "typecheck": "tsc -p ../jsconfig.json"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0",
+    "typescript": "^5.6.0"
+  }
+}
